@@ -153,6 +153,10 @@ class ProductLive extends Component
             'timerProgressBar' => true,
         ]);
     }
+    public function caracteristicas(Product $id)
+    {
+        return redirect()->route('almacen.caracteristicas', $id);
+    }
     public function export()
     {
         return Excel::download(new ProductsExport, 'product.xlsx');

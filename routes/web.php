@@ -11,6 +11,7 @@ use App\Livewire\Convenio\AcuerdoMarcoLive;
 use App\Livewire\Convenio\ImportProductLive;
 use App\Livewire\Convenio\ProductLive as ProductCmLive; //Convenio Marco
 use App\Livewire\Almacen\BrandLive;
+use App\Livewire\Almacen\CaracteristicaLive;
 use App\Livewire\Almacen\CategoryLive;
 use App\Livewire\Almacen\LineLive;
 use App\Livewire\Almacen\ProductLive;
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/products', ProductLive::class)->name('almacen.products');
+    Route::get('/products/caracteristicas/{id}', CaracteristicaLive::class)->name('almacen.caracteristicas');
     Route::get('/cotizacion', CotizacionLive::class)->name('almacen.cotizaciones');
     Route::get('/brands', BrandLive::class)->name('almacen.brands');
     Route::get('/lines', LineLive::class)->name('almacen.lines');

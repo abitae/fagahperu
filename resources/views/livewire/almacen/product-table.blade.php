@@ -92,6 +92,8 @@
                                     </button>
                                 </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
+                                    <x-button.button-view wire:click='caracteristicas({{ $product->id }})'>
+                                    </x-button.button-view>
                                     <x-button.button-edit wire:click='update({{ $product->id }})'>
                                     </x-button.button-edit>
                                     <x-button.button-delete wire:click='delete({{ $product->id }})'
