@@ -54,4 +54,8 @@ class Product extends Model
     {
         return $this->hasMany(CodeExit::class);
     }
+    public function caracteristicas()
+    {
+        return $this->hasMany(Caracteristica::class);
+    }
 }

@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/products', ProductLive::class)->name('almacen.products');
-    Route::get('/products/caracteristicas/{id}', CaracteristicaLive::class)->name('almacen.caracteristicas');
+    Route::get('/products/caracteristicas/{product}', CaracteristicaLive::class)->name('almacen.caracteristicas');
     Route::get('/cotizacion', CotizacionLive::class)->name('almacen.cotizaciones');
     Route::get('/brands', BrandLive::class)->name('almacen.brands');
     Route::get('/lines', LineLive::class)->name('almacen.lines');

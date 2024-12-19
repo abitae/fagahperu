@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\CaracteristicaProduct;
+use App\Models\Caracteristica;
+use App\Models\Product;
 use Livewire\Form;
 
 class CaracteristicaForm extends Form
 {
-    public ?CaracteristicaProduct $caracteristica;
+    public ?Caracteristica $caracteristica;
+    public $product_id;
     public $estructura = '';
     public $base_del_asiento = '';
     public $relleno_del_asiento = '';
@@ -51,9 +53,10 @@ class CaracteristicaForm extends Form
     public $contacto_superficie = '';
     public $cod_de_identif_unico = '';
 
-    public function setCaracteristica(CaracteristicaProduct $caracteristica)
+    public function setCaracteristica(Caracteristica $caracteristica)
     {
         $this->caracteristica = $caracteristica;
+        $this->product_id = $caracteristica->product_id;
         $this->estructura = $caracteristica->estructura;
         $this->base_del_asiento = $caracteristica->base_del_asiento;
         $this->relleno_del_asiento = $caracteristica->relleno_del_asiento;
@@ -97,4 +100,63 @@ class CaracteristicaForm extends Form
         $this->contacto_superficie = $caracteristica->contacto_superficie;
         $this->cod_de_identif_unico = $caracteristica->cod_de_identif_unico;
     }
+    public function store(Product $product)
+    {
+        //dd($product);
+        try {
+            //$this->validate();
+            $product->caracteristicas()->updateOrCreate(
+                ['product_id' => $product->id],
+                [
+                    'estructura' => $this->estructura,
+                    'base_del_asiento' => $this->base_del_asiento,
+                    'relleno_del_asiento' => $this->relleno_del_asiento,
+                    'acabado_del_asiento' => $this->acabado_del_asiento,
+                    'espaldar' => $this->espaldar,
+                    'relleno_del_espaldar' => $this->relleno_del_espaldar,
+                    'acabado_del_espaldar' => $this->acabado_del_espaldar,
+                    'reposa_brazos' => $this->reposa_brazos,
+                    'cantidad_de_patas' => $this->cantidad_de_patas,
+                    'soporte_peso_máximo' => $this->soporte_peso_máximo,
+                    'garantia_de_fabrica' => $this->garantia_de_fabrica,
+                    'unidad_de_despacho' => $this->unidad_de_despacho,
+                    'gama_de_color' => $this->gama_de_color,
+                    'marca' => $this->marca,
+                    'modelo' => $this->modelo,
+                    'codigo_de_identificacion_unico' => $this->codigo_de_identificacion_unico,
+                    'empaque_de_fabrica' => $this->empaque_de_fabrica,
+                    'certificado_de_ergonomía' => $this->certificado_de_ergonomía,
+                    'entrega_del_producto_armado' => $this->entrega_del_producto_armado,
+                    'soporte_del_asiento' => $this->soporte_del_asiento,
+                    'material_patas' => $this->material_patas,
+                    'apilable' => $this->apilable,
+                    'relleno_reposa_brazos' => $this->relleno_reposa_brazos,
+                    'material_del_piston' => $this->material_del_piston,
+                    'material_de_la_funda_del_piston' => $this->material_de_la_funda_del_piston,
+                    'tipo_de_mecanismo_del_asiento' => $this->tipo_de_mecanismo_del_asiento,
+                    'material_del_mecanismo_del_asiento'=> $this->material_del_mecanismo_del_asiento,
+                    'soporte_lumbar' => $this->soporte_lumbar,
+                    'reposacabeza' => $this->reposacabeza,
+                    'material_de_las_ruedas' => $this->material_de_las_ruedas,
+                    'tapizado_del_asiento' => $this->tapizado_del_asiento,
+                    'cubierta_del_espaldar' => $this->cubierta_del_espaldar,
+                    'tapizado_del_espaldar' => $this->tapizado_del_espaldar,
+                    'mecanismo_del_espaldar' => $this->mecanismo_del_espaldar,
+                    'tablero' => $this->tablero,
+                    'platina_de_anclaje' => $this->platina_de_anclaje,
+                    'tapizado_asiento' => $this->tapizado_asiento,
+                    'cantidad_de_cuerpos' => $this->cantidad_de_cuerpos,
+                    'contacto_superficie' => $this->contacto_superficie,
+                    'cod_de_identif_unico' => $this->cod_de_identif_unico,
+                    ]
+            );
+
+            infoLog('Caracteristica store', $this->product_id);
+            return true;
+        } catch (\Exception $e) {
+            errorLog('Caracteristica store', $e);
+            return false;
+        }
+    }
+
 }

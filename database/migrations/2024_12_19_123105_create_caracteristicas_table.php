@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_caracteristicas', function (Blueprint $table) {
+        Schema::create('caracteristicas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('estructura')->nullable();
@@ -34,7 +34,6 @@ return new class extends Migration
             $table->string('certificado_de_ergonomía')->nullable();
             $table->string('entrega_del_producto_armado')->nullable();
             $table->string('soporte_del_asiento')->nullable();
-            $table->string('reposa_brazos')->nullable();
             $table->string('material_patas')->nullable();
             $table->string('apilable')->nullable();
             $table->string('relleno_reposa_brazos')->nullable();
@@ -66,6 +65,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_caracteristicas');
+        Schema::dropIfExists('caracteristicas');
     }
 };

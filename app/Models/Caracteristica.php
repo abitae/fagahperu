@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCaracteristica extends Model
+class Caracteristica extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'estructura'
+        'product_id'
+        ,'estructura'
         , 'base_del_asiento'
         , 'relleno_del_asiento'
         , 'acabado_del_asiento'
@@ -54,4 +55,8 @@ class ProductCaracteristica extends Model
         , 'contacto_superficie'
         , 'cod_de_identif_unico',
     ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
