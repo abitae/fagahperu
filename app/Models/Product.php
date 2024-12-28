@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Almacen\Medida;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -57,5 +58,9 @@ class Product extends Model
     public function caracteristicas()
     {
         return $this->hasMany(Caracteristica::class);
+    }
+    public function medidas()
+    {
+        return $this->hasMany(Medida::class);
     }
 }

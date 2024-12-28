@@ -92,6 +92,8 @@
                                     </button>
                                 </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
+                                    <x-button.button-pdf wire:click='exportPdf({{ $product->id }})'>
+                                    </x-button.button-pdf>
                                     <x-button.button-view wire:click='caracteristicas({{ $product->id }})'>
                                     </x-button.button-view>
                                     <x-button.button-edit wire:click='update({{ $product->id }})'>

@@ -8,7 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Line;
 use App\Models\Product;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -160,5 +160,19 @@ class ProductLive extends Component
     public function export()
     {
         return Excel::download(new ProductsExport, 'product.xlsx');
+    }
+    public function exportPdf(Product $product)
+    {
+        dd($product);
+        
+        $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+            ->setPaper('a4', 'portrait')
+            ->loadView('livewire.almacen.report.cotizacion', compact('product'))
+            ->output();
+        return response()
+            ->streamDownload(
+                fn() => print($pdf),
+                "export.pdf"
+            );
     }
 }

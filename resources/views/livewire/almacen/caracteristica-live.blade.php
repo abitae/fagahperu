@@ -615,4 +615,143 @@
             </div>
         </div>
     </div>
+    <div class="flex flex-col mt-6">
+        <div class="overflow-x-auto rounded-lg">
+            <div class="inline-block min-w-full align-middle">
+                <div class="overflow-hidden shadow sm:rounded-lg">
+                    <!--begin::Form-->
+                    <form class="form" wire:submit="saveMedidas">
+                        <div
+                            class="p-4 space-y-2 transition-all duration-300 bg-white border-4 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.alto_total' type='text' for='alto_total'
+                                        label='alto_total' placeholder='alto_total' />
+                                    @error('medidaForm.alto_total')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.ancho_total' type='text' for='ancho_total'
+                                        label='ancho_total' placeholder='ancho_total' />
+                                    @error('medidaForm.ancho_total')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.profundidad_total' type='text'
+                                        for='profundidad_total' label='profundidad_total'
+                                        placeholder='profundidad_total' />
+                                    @error('medidaForm.profundidad_total')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.alto_espaldar' type='text'
+                                        for='alto_espaldar' label='alto_espaldar' placeholder='alto_espaldar' />
+                                    @error('medidaForm.alto_espaldar')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.ancho_espaldar' type='text'
+                                        for='ancho_espaldar' label='ancho_espaldar' placeholder='ancho_espaldar' />
+                                    @error('medidaForm.ancho_espaldar')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.profundidad_asiento' type='text'
+                                        for='profundidad_asiento' label='profundidad_asiento'
+                                        placeholder='profundidad_asiento' />
+                                    @error('medidaForm.profundidad_asiento')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.ancho_asiento' type='text'
+                                        for='ancho_asiento' label='ancho_asiento' placeholder='ancho_asiento' />
+                                    @error('medidaForm.ancho_asiento')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.altura_asiento' type='text'
+                                        for='altura_asiento' label='altura_asiento' placeholder='altura_asiento' />
+                                    @error('medidaForm.altura_asiento')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-area-input wire:model.live='medidaForm.recomendacion_uso' type='text'
+                                        for='recomendacion_uso' label='recomendacion_uso'
+                                        placeholder='recomendacion_uso' />
+                                    @error('medidaForm.recomendacion_uso')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-area-input wire:model.live='medidaForm.descripcion_general' type='text'
+                                        for='descripcion_general' label='descripcion_general'
+                                        placeholder='descripcion_general' />
+                                    @error('medidaForm.descripcion_general')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-text-input wire:model.live='medidaForm.margen_error' type='text'
+                                        for='margen_error' label='margen_error' placeholder='margen_error' />
+                                    @error('medidaForm.margen_error')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                            class="font-medium">Error!</span>
+                                        {{ $message }}.</p>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <x-button.button-save type="submit" class="w-full">Guardar</x-button.button-save>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
