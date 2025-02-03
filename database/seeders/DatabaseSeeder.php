@@ -121,15 +121,15 @@ class DatabaseSeeder extends Seeder
         $user->assignRole($role);
 
         $role = Role::create(['name' => 'User']);
-        User::factory(99)->create()->each(function ($user) {
+        /* User::factory(99)->create()->each(function ($user) {
             $user->assignRole('User');
-        });
-        Customer::factory(100)->create();
+        }); */
+        /* Customer::factory(100)->create();
         Employee::factory(10)->create();
         Supplier::factory(10)->create();
         Contact::factory(100)->create();
         Negocio::factory(100)->create();
-        ActionNegocio::factory(1000)->create();
+        ActionNegocio::factory(1000)->create(); */
         //Brand::factory(10)->create();
         //Category::factory(10)->create();
         //Line::factory(10)->create();
@@ -147,7 +147,7 @@ class DatabaseSeeder extends Seeder
         $sql5 = database_path(path: 'data/productos2.sql');
         DB::unprepared(file_get_contents($sql5));
 
-        AcuerdoMarco::create([
+        /* AcuerdoMarco::create([
             'code' => 'EXT-CE-2022-5',
             'name' => 'EXT-CE-2022-5 COMPUTADORAS DE ESCRITORIO, COMPUTADORAS PORTÁTILES Y ESCÁNERES',
             'isActive' => true,
@@ -167,6 +167,6 @@ class DatabaseSeeder extends Seeder
         Inventory::factory(200)->create();
         InventoryEntry::factory(1000)->create();
         InventoryExit::factory(1000)->create();
-        CodeExit::factory(100)->create();
+        CodeExit::factory(100)->create(); */
     }
 }
