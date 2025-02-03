@@ -53,13 +53,13 @@
                 <li class="w-full">
                     <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq"
                         aria-selected="true"
-                        class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500">Top
+                        class="inline-block w-full p-4 text-blue-600 border-blue-600 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 dark:border-blue-500">Top
                         products</button>
                 </li>
                 <li class="w-full">
                     <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about"
                         aria-selected="false"
-                        class="inline-block w-full p-4 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300">Top
+                        class="inline-block w-full p-4 text-gray-500 border-gray-100 rounded-tr-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-transparent hover:text-gray-600 dark:text-gray-400 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300">Top
                         Customers</button>
                 </li>
             </ul>
@@ -74,7 +74,7 @@
                                         alt="imac image">
                                     <div class="ml-3">
                                         <p class="font-medium text-gray-900 truncate dark:text-white">
-                                            Apple iMac 27"
+                                            Apple iMac 29"
                                         </p>
                                         <div
                                             class="flex items-center justify-end flex-1 text-sm text-green-500 dark:text-green-400">
