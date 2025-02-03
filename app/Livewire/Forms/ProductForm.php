@@ -115,7 +115,7 @@ class ProductForm extends Form
     }
     public function update()
     {
-        dd($this->product);
+        //dd($this->product);
         try {
 
             if (gettype($this->image) != 'string' && $this->image != null) {
