@@ -115,18 +115,18 @@ class ProductForm extends Form
     }
     public function update()
     {
-
+        dd($this->product);
         try {
 
-            if (gettype($this->image) != 'string') {
+            if (gettype($this->image) != 'string' && $this->image != null) {
                 Storage::delete($this->product->image);
                 $this->image = $this->image->store('product/image');
             }
-            if (gettype($this->archivo) != 'string') {
+            if (gettype($this->archivo) != 'string' && $this->archivo != null) {
                 Storage::delete($this->product->archivo);
                 $this->archivo = $this->archivo->store('product/pdf');
             }
-            if (gettype($this->archivo2) != 'string') {
+            if (gettype($this->archivo2) != 'string' && $this->archivo2 != null) {
                 $this->archivo2 = $this->archivo2->store('product/pdf2');
             }
             $this->product->update([
