@@ -59,7 +59,8 @@
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <x-select-input wire:model.live='negocioForm.priority' for='priority' label='Prioridad'>
+                        <x-select-input wire:model.live='negocioForm.priority' for='priority' label='Prioridad'>      
+                            <option value="">--Select--</option>                 
                             <option value="ALTA">ALTA</option>
                             <option value="MEDIA">MEDIA</option>
                             <option value="BAJA">BAJA</option>
@@ -76,6 +77,7 @@
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <x-select-input wire:model.live='negocioForm.stage' for='stage' label='Estado'>
+                            <option value="">--Select--</option>
                             <option value="NUEVO">NUEVO</option>
                             <option value="COTIZADO">COTIZADO</option>
                             <option value="GANADO">GANADO</option>
