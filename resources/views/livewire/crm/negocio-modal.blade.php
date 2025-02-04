@@ -7,6 +7,7 @@
                         <label for="customer_id">Cliente</label>
                         <select wire:model.live="negocioForm.customer_id" id="customer_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Seleccione un cliente</option>
                             @forelse ($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->id }}
                                     {{ $customer->first_name }}
@@ -23,6 +24,7 @@
                         <label for="user_id">Encargado</label>
                         <select wire:model="negocioForm.user_id" id="user_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Seleccione un usuario</option>
                             @forelse ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->id }}
                                     {{ $user->name }}</option>
