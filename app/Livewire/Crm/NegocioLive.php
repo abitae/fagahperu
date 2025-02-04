@@ -4,7 +4,6 @@ namespace App\Livewire\Crm;
 
 use App\Livewire\Forms\NegocioForm;
 use App\Models\Customer;
-use App\Models\Employee;
 use App\Models\Negocio;
 use App\Models\User;
 use Carbon\Carbon;
@@ -17,9 +16,8 @@ use Livewire\WithFileUploads;
 
 class NegocioLive extends Component
 {
-    use WithPagination, WithoutUrlPagination;
-    use LivewireAlert;
-    use WithFileUploads;
+    use WithPagination, WithoutUrlPagination, LivewireAlert, WithFileUploads;
+
     public NegocioForm $negocioForm;
     public $search = '';
     public $num = 10;
@@ -34,41 +32,40 @@ class NegocioLive extends Component
     {
         $this->selectedOption = $value;
     }
+
     public function mount()
     {
         $this->dateNow = Carbon::now('GMT-5')->format('Y-m-d');
     }
+
     #[Computed]
     public function negocios()
     {
         $search = $this->search;
-        return Negocio::where(
-            fn ($query)
-            => $query->orWhereHas('customer', function ($query) use ($search) {
-                $query->where('code', 'like', '%' . $search . '%');
+        return Negocio::where(function ($query) use ($search) {
+            $query->orWhereHas('customer', function ($query) use ($search) {
+                $query->where('code', 'like', '%' . $search . '%')
+                      ->orWhere('first_name', 'like', '%' . $search . '%');
             })
-                ->orWhereHas('customer', function ($query) use ($search) {
-                    $query->where('first_name', 'like', '%' . $search . '%');
-                })
-                ->orWhereHas('user', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%');
-                })
-                ->orWhereHas('user', function ($query) use ($search) {
-                    $query->where('email', 'like', '%' . $search . '%');
-                })
-                ->orWhere('code', 'LIKE', '%' . $search . '%')
-                ->orWhere('name', 'LIKE', '%' . $search . '%')
-            )
-            ->where('isActive', $this->isActive)
-            ->latest()
-            ->paginate($this->num, '*', 'page');
+            ->orWhereHas('user', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('email', 'like', '%' . $search . '%');
+            })
+            ->orWhere('code', 'LIKE', '%' . $search . '%')
+            ->orWhere('name', 'LIKE', '%' . $search . '%');
+        })
+        ->where('isActive', $this->isActive)
+        ->latest()
+        ->paginate($this->num, '*', 'page');
     }
+
     public function render()
     {
         $customers = Customer::all();
         $users = User::all();
         return view('livewire.crm.negocio-live', compact('customers', 'users'))->layout('components.layouts.app');;
     }
+
     public function detail(Negocio $id)
     {
         return \Redirect::route('crm.detail', [$id]);
@@ -79,9 +76,9 @@ class NegocioLive extends Component
         $this->negocioForm->reset();
         $this->isOpenModal = true;
     }
+
     public function createNegocio()
     {
-
         if ($this->negocioForm->store()) {
             $this->message('success', 'En hora buena!', 'Registro creado correctamente!');
             $this->isOpenModal = false;
@@ -89,14 +86,15 @@ class NegocioLive extends Component
             $this->message('error', 'Error!', 'Verifique los datos ingresados!');
         }
     }
+
     public function update(Negocio $negocio)
     {
         $this->negocioForm->setNegocio($negocio);
         $this->isOpenModal = true;
     }
+
     public function updateNegocio()
     {
-        //dd($this->negocioForm->negocio);
         if ($this->negocioForm->update()) {
             $this->message('success', 'En hora buena!', 'Registro actualizado correctamente!');
             $this->isOpenModal = false;
@@ -113,6 +111,7 @@ class NegocioLive extends Component
             $this->message('error', 'Error!', 'No se pudo eliminar el registro!');
         }
     }
+
     public function estado(Negocio $negocio)
     {
         if ($this->negocioForm->estado($negocio->id)) {
@@ -127,10 +126,12 @@ class NegocioLive extends Component
         $this->isOpenModalExport = false;
         return $this->negocioForm->export();
     }
+
     public function updatedSearch($value)
     {
         $this->resetPage();
     }
+
     private function message($tipo, $tittle, $message)
     {
         $this->alert($tipo, $tittle, [

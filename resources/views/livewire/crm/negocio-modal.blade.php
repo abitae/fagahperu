@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-span-3 sm:col-span-3">
                         <label for="employee_id">Encargado</label>
-                        <select wire:model.live="negocioForm.employee_id" id="employee_id"
+                        <select wire:model="negocioForm.user_id" id="employee_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @forelse ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->id }}

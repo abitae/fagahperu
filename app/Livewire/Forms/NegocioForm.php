@@ -46,6 +46,7 @@ class NegocioForm extends Form
     }
     public function store()
     {
+        dd($this->user_id);
         try {
             $this->validate();
             Negocio::create([
