@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Exports\NegociosExport;
+use App\Models\Customer;
 use App\Models\Negocio;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -46,11 +47,11 @@ class NegocioForm extends Form
     }
     public function store()
     {
-        //dd($this->user_id);
+        //dd($this->customer_id);
         try {
             $this->validate();
             Negocio::create([
-                'customer_id' => $this->customer_id,
+                'customer_id' => $this->customer_id ?? Customer::first()->id,
                 'user_id' => $this->user_id,
                 'code' => $this->code,
                 'name' => $this->name,
