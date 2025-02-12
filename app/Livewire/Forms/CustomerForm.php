@@ -19,11 +19,11 @@ class CustomerForm extends Form
     public $code = '';
     #[Validate('required')]
     public $first_name = '';
-    #[Validate('required')]
+    #[Validate('')]
     public $phone = '';
-    #[Validate('required|email')]
+    #[Validate('email')]
     public $email = '';
-    #[Validate('required')]
+    #[Validate('')]
     public $address = '';
     #[Validate('nullable|sometimes|mimes:pdf|max:10960|extensions:pdf')] // 1MB Max
     public $archivo = '';

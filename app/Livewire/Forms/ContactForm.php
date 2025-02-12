@@ -22,11 +22,11 @@ class ContactForm extends Form
     public $last_name = '';
     #[Validate('required')]
     public $date_brinday = '';
-    #[Validate('required')]
+    #[Validate('')]
     public $phone = '';
-    #[Validate('required|email')]
+    #[Validate('email')]
     public $email = '';
-    #[Validate('required')]
+    #[Validate('')]
     public $address = '';
     public $isActive = false;
     public function setContact(Contact $contact)

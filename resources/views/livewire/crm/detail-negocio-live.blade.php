@@ -109,7 +109,21 @@
                                     <div class="flex-1 min-w-0">
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
+                                                <p
+                                                    class="mb-1 text-sm font-normal truncate text-primary-700 dark:text-gray-500">
+                                                    {{ $action->tipo }}
+                                                </p>
+                                            </div>
 
+                                        </div>
+                                        <p class="text-gray-800 font-mddium text-md dark:text-gray-400">
+                                            {{ $action->description }}
+                                        </p>
+                                        <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                                            {{ \Carbon\Carbon::parse($action->date)->format('d/m/Y h:i:s') }}
+                                        </p>
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-3">
                                                 <p
                                                     class="text-base font-semibold text-gray-900 leading-none truncate mb-0.5 dark:text-white">
                                                     Contacto: {{ $action->contact->first_name }}
@@ -136,21 +150,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-6 gap-6">
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <p
-                                                    class="mb-1 text-sm font-normal truncate text-primary-700 dark:text-gray-500">
-                                                    {{ $action->tipo }}
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                        <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
-                                            {{ $action->description }}
-                                        </p>
-                                        <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
-                                            {{ \Carbon\Carbon::parse($action->date)->format('d/m/Y h:i:s') }}
-                                        </p>
+                                        
 
                                     </div>
                                 </div>

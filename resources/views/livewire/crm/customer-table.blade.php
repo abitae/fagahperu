@@ -59,7 +59,7 @@
                                     <div
                                         class="h-2.5 w-2.5 rounded-full {{ $customer->isActive ? 'bg-green-400' : 'bg-red-600' }} mr-2">
                                     </div>
-                                    {{ $customer->isActive ? 'Active' : 'Disabled' }}
+                                    {{ $customer->isActive ? 'Autorizado' : 'No autorizado' }}
                                 </button>
                             </td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
