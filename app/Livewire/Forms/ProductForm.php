@@ -28,10 +28,10 @@ class ProductForm extends Form
     public $price_compra = '';
     #[Validate('required|numeric|min:0')]
     public $price_venta = '';
-    public $porcentaje = 1;
+    public $porcentaje = 0;
     #[Validate('required')]
     public $stock = '';
-    public $dias_entrega = 4;
+    public $dias_entrega = 0;
     #[Validate('required')]
     public $description = '';//
     public $tipo = '';
@@ -75,12 +75,15 @@ class ProductForm extends Form
         try {
             $this->validate();
             if (gettype($this->image) != 'string') {
+                Storage::delete($this->product->image);
                 $this->image = $this->image->store('product/image');
             }
             if (gettype($this->archivo) != 'string') {
+                Storage::delete($this->product->archivo);
                 $this->archivo = $this->archivo->store('product/pdf');
             }
             if (gettype($this->archivo2) != 'string') {
+                Storage::delete($this->product->archivo2);
                 $this->archivo2 = $this->archivo2->store('product/pdf2');
             }
             Product::create([
@@ -113,7 +116,6 @@ class ProductForm extends Form
     }
     public function update()
     {
-        //dd($this->product);
         try {
 
             if (gettype($this->image) != 'string' && $this->image != null) {

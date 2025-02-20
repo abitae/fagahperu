@@ -57,18 +57,16 @@
                                     {{ $product->code_fabrica }}</p>
                                 <p class="mb-1 text-xs text-hover-primary">
                                     {{ $product->code_peru }}</p>
-                                @isset($product->archivo)
+                                @if ($product->archivo)
                                 <a target="_blank" href='{{ asset("storage/$product->archivo") }}'
                                     class="mb-1 text-xs text-green-600 bg-yellow-200 text-hover-primary">
                                     Ficha Tecnica</a>
-                                @endisset
-                                @isset($product->archivo2)
+                                @endif
+                                @if ($product->archivo2)
                                 <a target="_blank" href='{{ asset("storage/$product->archivo2") }}'
                                     class="mb-1 text-xs text-yellow-600 bg-green-500 text-hover-primary">
                                     Certificado</a>
                                 @endisset
-
-
                             </td>
                             <td class="p-4 text-xs font-normal text-gray-500 dark:text-white">
                                 {{ $product->description }}

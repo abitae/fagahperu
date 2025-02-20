@@ -3,7 +3,6 @@
 namespace App\Livewire\Crm;
 
 use App\Livewire\Forms\NegocioForm;
-use App\Models\Crm\CustomerType;
 use App\Models\Customer;
 use App\Models\Negocio;
 use App\Models\User;
@@ -27,7 +26,6 @@ class NegocioLive extends Component
     public $isOpenModalExport = false;
     public $dateNow;
     public $selectedOption;
-    public $customerFilter;
     protected $listeners = ['select2Changed' => 'handleSelect2Changed'];
 
     public function handleSelect2Changed($value)
@@ -56,11 +54,6 @@ class NegocioLive extends Component
             ->orWhere('code', 'LIKE', '%' . $search . '%')
             ->orWhere('name', 'LIKE', '%' . $search . '%');
         })
-        ->when($this->customerFilter, function ($query) {
-            $query->whereHas('customer', function ($query) {
-                $query->where('type_id', $this->customerFilter);
-            });
-        })
         ->where('isActive', $this->isActive)
         ->latest()
         ->paginate($this->num, '*', 'page');
@@ -70,8 +63,7 @@ class NegocioLive extends Component
     {
         $customers = Customer::all();
         $users = User::all();
-        $customerTypes = CustomerType::all();
-        return view('livewire.crm.negocio-live', compact('customers', 'users', 'customerTypes'))->layout('components.layouts.app');
+        return view('livewire.crm.negocio-live', compact('customers', 'users'))->layout('components.layouts.app');;
     }
 
     public function detail(Negocio $id)
