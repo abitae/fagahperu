@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('type_id')->constrained('customer_types')->nullable();
             $table->string('type_code');
             $table->string('code')->unique();
             $table->string('first_name');

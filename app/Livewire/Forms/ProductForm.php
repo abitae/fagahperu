@@ -28,11 +28,11 @@ class ProductForm extends Form
     public $price_compra = '';
     #[Validate('required|numeric|min:0')]
     public $price_venta = '';
-    #[Validate('required|numeric|min:0')]
+    #[Validate('numeric|min:0')]
     public $porcentaje = '';
     #[Validate('required')]
     public $stock = '';
-    #[Validate('required')]
+    #[Validate('numeric|min:0')]
     public $dias_entrega = '';
     #[Validate('required')]
     public $description = '';//
@@ -73,7 +73,7 @@ class ProductForm extends Form
     }
     public function store()
     {
-        
+
         try {
             $this->validate();
             if (gettype($this->image) != 'string') {

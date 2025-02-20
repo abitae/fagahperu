@@ -4,6 +4,7 @@ namespace App\Livewire\Crm;
 
 use App\Exports\CustomersExport;
 use App\Livewire\Forms\CustomerForm;
+use App\Models\Crm\CustomerType;
 use App\Models\Customer;
 use App\Models\Line;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -51,7 +52,8 @@ class CustomerLive extends Component
     public function render()
     {
         $lines = Line::where('isActive', true)->get();
-        return view('livewire.crm.customer-live', compact('lines'));
+        $customerTypes = CustomerType::where('isActive', true)->get();
+        return view('livewire.crm.customer-live', compact('lines', 'customerTypes'));
     }
     public function create()
     {
@@ -92,8 +94,6 @@ class CustomerLive extends Component
     {
         $data = buscar_documento_h($this->customerForm->type_code, $this->customerForm->code);
         try {
-
-            //dd($data);
             if ($data['respuesta'] == 'ok') {
                 if ($this->customerForm->type_code == 'dni') {
                     $this->customerForm->first_name = $data['data']->nombre;
@@ -158,7 +158,7 @@ class CustomerLive extends Component
     public function getAutorization()
     {
         $fecha = \Carbon\Carbon::now()->locale("es_PE")->isoFormat('D \d\e MMMM \d\e\l Y');
-        
+
         $line = Line::find($this->line_atutorization);
         $customer = $this->customerForm->customer;
         $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])

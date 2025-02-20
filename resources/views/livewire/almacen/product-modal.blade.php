@@ -162,7 +162,7 @@
                             <div class="col-span-6 sm:col-span-2">
                                 <x-text-input wire:model.live='productForm.porcentaje' type='number' min="0"
                                     step="0.1" for='porcentaje' label='Porcentaje'
-                                    placeholder='Ingrese porcentaje' required />
+                                    placeholder='Ingrese porcentaje' />
                                 @error('productForm.porcentaje')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                             class="font-medium">Error!</span> {{ $message }}.</p>
@@ -190,8 +190,8 @@
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <x-text-input wire:model.live='productForm.dias_entrega' type='number'
-                                    min="0" step="1" for='dias_entrega' label='Porcentaje'
-                                    placeholder='Ingrese dias entrega' required />
+                                    min="0" step="1" for='dias_entrega' label='Dias entrega'
+                                    placeholder='Ingrese dias entrega' />
                                 @error('productForm.dias_entrega')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                             class="font-medium">Error!</span> {{ $message }}.</p>

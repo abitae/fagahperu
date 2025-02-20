@@ -74,6 +74,15 @@
                             <option value="0">Disabled</option>
                         </select>
                     </div>
+                    <div class="relative">
+                        <x-select-input wire:model.live.debounce.200ms="customerFilter" for='rol' label=' '>
+                            <option>*Cliente</option>
+                            @forelse ($customerTypes as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @empty
+                            @endforelse
+                        </x-select-input>
+                    </div>
                 </div>
                 <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
                     <x-button.button-pluss-purple wire:click="create">

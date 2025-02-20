@@ -33,6 +33,16 @@
                     </div>
 
                 </div>
+                <div>
+                    <x-select-input wire:model.live="customerForm.type_id" for='rol' label='Tipo documento'>
+                        <option>*Select option</option>
+                        @forelse ($customerTypes as $customerType)
+                            <option value="{{ $customerType->id }}">{{ $customerType->name }}</option>
+                        @empty
+                            <option value="">No hay tipos de documentos</option>
+                        @endforelse
+                    </x-select-input>
+                </div>
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-6">
                         <x-text-input wire:model.live='customerForm.first_name' type='text' for='first_name'
@@ -125,7 +135,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
             </div>
             <div class="flex items-center p-4 border-t border-gray-200 rounded-b md:p-5 dark:border-gray-600">
                 <x-button.button-danger type="button" wire:click="$toggle('isOpenModalAutorization')">

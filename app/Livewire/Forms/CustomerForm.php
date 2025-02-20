@@ -13,6 +13,8 @@ use Maatwebsite\Excel\Facades\Excel;
 class CustomerForm extends Form
 {
     public ?Customer $customer;
+    #[Validate('required')]
+    public $type_id = '';
     #[Validate('required|min:3|max:3')]
     public $type_code;
     #[Validate('required|numeric|digits_between:8,11|unique:customers')]
@@ -31,6 +33,7 @@ class CustomerForm extends Form
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
+        $this->type_id = $customer->type_id;
         $this->type_code = $customer->type_code;
         $this->code = $customer->code;
         $this->first_name = $customer->first_name;
@@ -48,6 +51,7 @@ class CustomerForm extends Form
                 $this->archivo = $this->archivo->store('customer/pdf');
             }
             Customer::create([
+                'type_id' => $this->type_id,
                 'type_code' => $this->type_code,
                 'code' => $this->code,
                 'first_name' => $this->first_name,
@@ -71,6 +75,7 @@ class CustomerForm extends Form
                 $this->archivo = $this->archivo->store('customer/pdf');
             }
             $this->customer->update([
+                'type_id' => $this->type_id,
                 'type_code' => $this->type_code,
                 'code' => $this->code,
                 'first_name' => $this->first_name,

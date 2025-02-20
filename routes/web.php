@@ -16,6 +16,7 @@ use App\Livewire\Almacen\CategoryLive;
 use App\Livewire\Almacen\LineLive;
 use App\Livewire\Almacen\ProductLive;
 use App\Livewire\Almacen\CotizacionLive;
+use App\Livewire\Crm\CustomerTypeLive;
 use App\Livewire\Crm\DetailNegocioLive;
 use App\Livewire\Crm\NegocioLive;
 use App\Livewire\Crm\SupplierLive;
@@ -55,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/brands', BrandLive::class)->name('almacen.brands');
     Route::get('/lines', LineLive::class)->name('almacen.lines');
     Route::get('/categories', CategoryLive::class)->name('almacen.categories');
+    Route::get('/customer-types', CustomerTypeLive::class)->name('crm.customer-types');
 });
 //Acuerdo Marco
 Route::middleware('auth')->group(function () {

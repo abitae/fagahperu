@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Crm\CustomerType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,7 @@ class Customer extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'type_id',
         'type_code',
         'code',
         'first_name',
@@ -29,5 +31,9 @@ class Customer extends Model
     public function inventories()
     {
         return $this->hasMany(InventoryExit::class);
+    }
+    public function type()
+    {
+        return $this->belongsTo(CustomerType::class, 'type_code');
     }
 }

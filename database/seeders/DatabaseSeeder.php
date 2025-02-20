@@ -41,26 +41,26 @@ class DatabaseSeeder extends Seeder
 
         $role = Role::create(['name' => 'Admin']);
         $arrayOfPermissionNames = [];
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear usuario',
             'Ver usuario',
             'Editar usuario',
             'Eliminar usuario'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear rol',
             'Ver rol',
             'Editar rol',
             'Eliminar rol'
         );
         //CM permisos
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'CM Import',
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'CM Data',
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear acuerdo',
             'Ver acuerdo',
             'Editar acuerdo',
@@ -68,19 +68,19 @@ class DatabaseSeeder extends Seeder
         );
         //CM end
         //CRM permisos
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear negocio',
             'Ver negocio',
             'Editar negocio',
             'Eliminar negocio'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear cliente',
             'Ver cliente',
             'Editar cliente',
             'Eliminar cliente'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear contacto',
             'Ver contacto',
             'Editar contacto',
@@ -88,25 +88,25 @@ class DatabaseSeeder extends Seeder
         );
         //CRM end
         //Almacenar permisos
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear producto',
             'Ver producto',
             'Editar producto',
             'Eliminar producto'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear marca',
             'Ver marca',
             'Editar marca',
             'Eliminar marca'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear categoria',
             'Ver categoria',
             'Editar categoria',
             'Eliminar categoria'
         );
-        array_push($arrayOfPermissionNames, 
+        array_push($arrayOfPermissionNames,
             'Crear linea',
             'Ver linea',
             'Editar linea',
@@ -133,7 +133,7 @@ class DatabaseSeeder extends Seeder
         //Brand::factory(10)->create();
         //Category::factory(10)->create();
         //Line::factory(10)->create();
-        $sql1 = database_path(path: 'data/categoria.sql');
+        /* $sql1 = database_path(path: 'data/categoria.sql');
         DB::unprepared(file_get_contents($sql1));
 
         $sql2 = database_path(path: 'data/marca.sql');
@@ -145,7 +145,7 @@ class DatabaseSeeder extends Seeder
         $sql4 = database_path(path: 'data/productos.sql');
         DB::unprepared(file_get_contents($sql4));
         $sql5 = database_path(path: 'data/productos2.sql');
-        DB::unprepared(file_get_contents($sql5));
+        DB::unprepared(file_get_contents($sql5)); */
 
         /* AcuerdoMarco::create([
             'code' => 'EXT-CE-2022-5',
