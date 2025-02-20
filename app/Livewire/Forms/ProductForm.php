@@ -28,11 +28,9 @@ class ProductForm extends Form
     public $price_compra = '';
     #[Validate('required|numeric|min:0')]
     public $price_venta = '';
-    #[Validate('numeric|min:0')]
     public $porcentaje = 1;
     #[Validate('required')]
     public $stock = '';
-    #[Validate('numeric|min:0')]
     public $dias_entrega = 4;
     #[Validate('required')]
     public $description = '';//
