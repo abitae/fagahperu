@@ -29,11 +29,11 @@ class ProductForm extends Form
     #[Validate('required|numeric|min:0')]
     public $price_venta = '';
     #[Validate('numeric|min:0')]
-    public $porcentaje = '';
+    public $porcentaje = 1;
     #[Validate('required')]
     public $stock = '';
     #[Validate('numeric|min:0')]
-    public $dias_entrega = '';
+    public $dias_entrega = 4;
     #[Validate('required')]
     public $description = '';//
     public $tipo = '';
@@ -106,10 +106,10 @@ class ProductForm extends Form
                 'archivo' => $this->archivo,
                 'archivo2' => $this->archivo2,
             ]);
-            infoLog('Product store', $this->code);
+            infoLog('Product store form', $this->code);
             return true;
         } catch (\Exception $e) {
-            errorLog('Product store', $e);
+            errorLog('Product store form', $e);
             return false;
         }
     }
@@ -150,10 +150,10 @@ class ProductForm extends Form
                 'archivo' => $this->archivo,
                 'archivo2' => $this->archivo2,
             ]);
-            infoLog('Product update', $this->code);
+            infoLog('Product update form', $this->code);
             return true;
         } catch (\Exception $e) {
-            errorLog('Product update', $e);
+            errorLog('Product update form', $e);
             return false;
         }
     }
@@ -162,10 +162,10 @@ class ProductForm extends Form
         try {
             $product = Product::find($id);
             $product->delete();
-            infoLog('Product deleted', $product->code);
+            infoLog('Product deleted form', $product->code);
             return true;
         } catch (\Exception $e) {
-            errorLog('Product deleted', $e);
+            errorLog('Product deleted form', $e);
             return false;
         }
     }
@@ -178,7 +178,7 @@ class ProductForm extends Form
             infoLog('Product estado ' . $product->isActive, $product->code);
             return true;
         } catch (\Exception $e) {
-            errorLog('Product estado', $e);
+            errorLog('Product estado form', $e);
             return false;
         }
     }

@@ -105,6 +105,7 @@ class ProductLive extends Component
     }
     public function createProduct()
     {
+        //dd($this->productForm->all());
         if ($this->productForm->store()) {
             $this->message('success', 'En hora buena!', 'Registro creado correctamente!');
             $this->isOpenModal = false;
@@ -164,7 +165,7 @@ class ProductLive extends Component
     public function exportPdf(Product $product)
     {
         dd($product);
-        
+
         $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
             ->setPaper('a4', 'portrait')
             ->loadView('livewire.almacen.report.cotizacion', compact('product'))

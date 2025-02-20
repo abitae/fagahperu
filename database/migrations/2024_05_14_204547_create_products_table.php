@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('code_peru')->nullable();
             $table->decimal('price_compra',8,2)->default(0.0);
             $table->decimal('price_venta',8,2)->default(0.0);
-            $table->integer('porcentaje')->nullable();
+            $table->integer('porcentaje')->default(20)->nullable();
             $table->integer('stock');
             $table->integer('dias_entrega')->default(4);
             $table->longText('description');
