@@ -213,10 +213,10 @@
                             </div>
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
-                                    <x-text-input wire:model.live='form.garantía_de_fabrica' type='text'
-                                        for='garantía_de_fabrica' label='garantía_de_fabrica'
-                                        placeholder='garantía_de_fabrica' />
-                                    @error('form.garantía_de_fabrica')
+                                    <x-text-input wire:model.live='form.garantia_de_fabrica' type='text'
+                                        for='garantia_de_fabrica' label='garantia_de_fabrica'
+                                        placeholder='garantia_de_fabrica' />
+                                    @error('form.garantia_de_fabrica')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                             class="font-medium">Error!</span>
                                         {{ $message }}.</p>
