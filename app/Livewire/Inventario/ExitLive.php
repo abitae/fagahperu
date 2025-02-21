@@ -17,10 +17,10 @@ class ExitLive extends Component
     public $warehouse;
     public $product = 1; //select2
     public $customer = 1; //select2
-    public ExitForm $entryForm;
+    public ExitForm $exitForm;
     public function mount($id)
     {
-        $this->warehouse = Warehouse::find($id);
+        $this->warehouse = Warehouse::findOrFail($id);
     }
     public function render()
     {
@@ -31,9 +31,9 @@ class ExitLive extends Component
     }
     public function createExit()
     {
-        if ($this->entryForm->store($this->warehouse, $this->product, $this->customer)) {
+        if ($this->exitForm->store($this->warehouse, $this->product, $this->customer)) {
             $this->message('success', 'En hora buena!', 'Registro creado correctamente!');
-            $this->entryForm->reset();
+            $this->exitForm->reset();
         } else {
             $this->message('error', 'Error!', 'Verifique los datos ingresados!');
         }
@@ -43,7 +43,7 @@ class ExitLive extends Component
         $this->alert($tipo, $tittle, [
             'position' => 'top-end',
             'timer' => 3000,
-            'toast' => false,
+            'toast' => true,
             'text' => $message,
             'timerProgressBar' => true,
         ]);

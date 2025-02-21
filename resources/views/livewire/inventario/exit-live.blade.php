@@ -80,7 +80,7 @@
                                                         @endforelse
                                                     </select>
                                                 </div>
-                                                @error('entryForm.customer_id')
+                                                @error('exitForm.customer_id')
                                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                                             class="font-medium">Error!</span>
                                                         {{ $message }}.</p>
@@ -88,7 +88,7 @@
                                             </div>
                                             <div wire:ignore class="col-span-3 sm:col-span-3">
                                                 <label for="product_id">Producto</label>
-                                                <select wire:model.live="entryForm.product_id" id="product_id"
+                                                <select wire:model.live="exitForm.product_id" id="product_id"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                                                     @forelse ($products as $item)
@@ -98,7 +98,7 @@
                                                     @empty
                                                     @endforelse
                                                 </select>
-                                                @error('entryForm.product_id')
+                                                @error('exitForm.product_id')
                                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                                             class="font-medium">Error!</span>
                                                         {{ $message }}.</p>
@@ -123,7 +123,7 @@
                                                     Cantidad
                                                 </label>
                                                 <input min="0" step="1" type="number"
-                                                    wire:model.live='entryForm.quantity' id="quantity"
+                                                    wire:model.live='exitForm.quantity' id="quantity"
                                                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     placeholder="Cantidad" required="">
                                             </div>
@@ -133,12 +133,12 @@
                                                     Precio Venta
                                                 </label>
                                                 <input min="0" step=".01" type="number"
-                                                    wire:model.live='entryForm.unit_price' id="unit_price"
+                                                    wire:model.live='exitForm.unit_price' id="unit_price"
                                                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     placeholder="Precio unitario" required="">
                                             </div>
                                             <div class="col-span-6 sm:col-span-6">
-                                                <x-area-input wire:model.live='entryForm.description' type='text'
+                                                <x-area-input wire:model.live='exitForm.description' type='text'
                                                     for='description' label='Description'
                                                     placeholder='Ingrese descripcion' required>
                                                 </x-area-input>

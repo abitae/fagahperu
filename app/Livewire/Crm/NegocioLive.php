@@ -3,6 +3,7 @@
 namespace App\Livewire\Crm;
 
 use App\Livewire\Forms\NegocioForm;
+use App\Models\Crm\CustomerType;
 use App\Models\Customer;
 use App\Models\Negocio;
 use App\Models\User;
@@ -63,7 +64,8 @@ class NegocioLive extends Component
     {
         $customers = Customer::all();
         $users = User::all();
-        return view('livewire.crm.negocio-live', compact('customers', 'users'))->layout('components.layouts.app');;
+        $customerTypes = CustomerType::all();
+        return view('livewire.crm.negocio-live', compact('customers', 'users', 'customerTypes'))->layout('components.layouts.app');;
     }
 
     public function detail(Negocio $id)

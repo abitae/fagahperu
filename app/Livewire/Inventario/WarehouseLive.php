@@ -42,7 +42,7 @@ class WarehouseLive extends Component
     }
     public function delete(Warehouse $warehouse)
     {
-        
+
         if ($this->warehouseForm->destroy($warehouse->id)) {
             $this->message('success', 'En hora buena!', 'Registro eliminado correctamente!');
         } else {
@@ -51,7 +51,7 @@ class WarehouseLive extends Component
     }
     public function estado(Warehouse $warehouse)
     {
-        
+
         if ($this->warehouseForm->estado($warehouse->id)) {
             $this->message('success', 'En hora buena!', 'Registro actualiza correctamente!');
         } else {

@@ -13,14 +13,14 @@ class WarehouseForm extends Form
     public $name = '';
     #[Validate('required')]
     public $location = '';
-    public $isActive = false;
+    public $isActive = true;
     public function setWarehouse(Warehouse $warehouse)
     {
-        
+
         $this->warehouse = $warehouse;
         $this->name = $warehouse->name;
         $this->location = $warehouse->location;
-        
+
     }
     public function store()
     {
@@ -62,7 +62,7 @@ class WarehouseForm extends Form
     }
     public function estado($id)
     {
-        
+
         try {
             $warehouse = Warehouse::find($id);
             $warehouse->isActive = !$warehouse->isActive;

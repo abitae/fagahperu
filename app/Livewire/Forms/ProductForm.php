@@ -75,15 +75,14 @@ class ProductForm extends Form
         try {
             $this->validate();
             if (gettype($this->image) != 'string') {
-                Storage::delete($this->product->image);
+
                 $this->image = $this->image->store('product/image');
             }
             if (gettype($this->archivo) != 'string') {
-                Storage::delete($this->product->archivo);
+
                 $this->archivo = $this->archivo->store('product/pdf');
             }
             if (gettype($this->archivo2) != 'string') {
-                Storage::delete($this->product->archivo2);
                 $this->archivo2 = $this->archivo2->store('product/pdf2');
             }
             Product::create([

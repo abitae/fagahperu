@@ -139,15 +139,16 @@
                                                         </button>
                                                     </td>
                                                     <td class="p-4 space-x-2 whitespace-nowrap">
-                                                        <x-button.button-pdf
-                                                            wire:click='addCodeExit({{ $item->id }})'>
-                                                        </x-button.button-pdf>
+                                                        <x-button.button-edit2
+                                                            wire:click='addCodeExit({{ $item->id }})'>Codes
+                                                        </x-button.button-edit2>
 
-                                                        <x-button.button-edit wire:click='update({{ $item->id }})'>
+                                                        <x-button.button-edit
+                                                            wire:click='update({{ $item->id }})'>Edit
                                                         </x-button.button-edit>
                                                         <x-button.button-delete
                                                             wire:click='delete({{ $item->id }})'
-                                                            wire:confirm.prompt="Estas seguro de eliminar registro?\n\nEscriba '{{ $item->code_entrada }}' para confirmar!|{{ $item->code_entrada }}">
+                                                            wire:confirm.prompt="Estas seguro de eliminar registro?\n\nEscriba '{{ $item->code_entrada }}' para confirmar!|{{ $item->code_entrada }}">Eliminar
                                                         </x-button.button-delete>
                                                     </td>
                                                 </tr>

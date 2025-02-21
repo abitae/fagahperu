@@ -10,11 +10,11 @@ use Livewire\Component;
 class ChartBarraLive extends Component
 {
     public function render()
-    {       
-        $series = [           
-            $this->serieChart("Abierto",'#9B0EEA','ABIERTO'),
-            $this->serieChart("Perdido",'#FF0000','PERDIDO'),
-            $this->serieChart("Ganado",'#00FF00','GANADO')
+    {
+        $series = [
+            $this->serieChart("En Proceso",'#9B0EEA','EN PROCESO'),
+            $this->serieChart("Aceptado",'#FF0000','ACEPTADO'),
+            $this->serieChart("Perdido",'#00FF00','PERDIDO')
         ];
         $name = "name";
         $categories = $this->categoryChart();
@@ -27,12 +27,12 @@ class ChartBarraLive extends Component
         $year = $date->year;
         for ($i=1; $i <= 12 ; $i++) {
             if($mes - $i <= 0){
-                array_push($data,Negocio::where('stage',$stage)->whereMonth('updated_at', $i )->whereYear('updated_at', $year-1)->count()); 
+                array_push($data,Negocio::where('stage',$stage)->whereMonth('updated_at', $i )->whereYear('updated_at', $year-1)->count());
             }
         }
         for ($i=12; $i >= 1 ; $i--) {
             if($mes - $i > 0){
-                array_push($data,Negocio::where('stage',$stage)->whereMonth('updated_at', ($mes - $i) )->whereYear('updated_at', $year)->count()); 
+                array_push($data,Negocio::where('stage',$stage)->whereMonth('updated_at', ($mes - $i) )->whereYear('updated_at', $year)->count());
             }
         }
         return $data;
@@ -43,13 +43,13 @@ class ChartBarraLive extends Component
         $mes = $date->month + 1;
         $year = $date->year;
         for ($i=1; $i <= 12 ; $i++) {
-            if($mes - $i <= 0){ 
+            if($mes - $i <= 0){
                 $fecha = Carbon::parse(($year-1).'-'.$i.'-'.'01')->format('M');
                 array_push($cat,$fecha);
             }
         }
         for ($i=12; $i >= 1 ; $i--) {
-            if($mes - $i > 0){ 
+            if($mes - $i > 0){
                 $fecha = Carbon::parse($year.'-'.($mes - $i).'-'.'01')->format('M');
                 array_push($cat,$fecha);
             }

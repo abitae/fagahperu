@@ -11,7 +11,7 @@ use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-class ProductoStore extends Component
+class ProductoStoreLive extends Component
 {
     public $search = '';
     public ProductStoreForm $productForm;
@@ -26,7 +26,7 @@ class ProductoStore extends Component
         $products = ProductStore::where('code_entrada', 'LIKE', '%' . $this->search . '%')
             ->latest()
             ->paginate(10);
-        return view('livewire.inventario.producto-store', compact('products'));
+        return view('livewire.inventario.producto-store-live', compact('products'));
     }
     public function updatedSearch($value)
     {

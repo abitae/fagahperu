@@ -31,10 +31,10 @@ class ExitForm extends Form
         try {
             $inventario = Inventory::where('warehouse_id', $warehouse->id)
                 ->where('product_id', $product)->first();
-            
             if (!$inventario){
                 return false;
             }else{
+                //dd($inventario->quantity,$this->quantity);
                 $inventario->quantity -= $this->quantity;
                 if ($inventario->quantity < 0) {
                     return false;
