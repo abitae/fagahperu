@@ -47,25 +47,17 @@
                         <td colspan="8">
                             <div class="w-full h-1 bg-gray-200 rounded-full dark:bg-gray-700">
                                 @switch($negocio->stage)
-                                @case('NUEVO')
-                                <div class="h-1 bg-purple-600 rounded-full" style="width: 25%"></div>
+                                @case('PROCESO')
+                                <div class="h-1 bg-red-500 rounded-full" style="width: 25%"></div>
                                 @break
-
-                                @case('GANADO')
-                                <div class="h-1 bg-green-400 rounded-full" style="width: 100%"></div>
-                                @break
-
-                                @case('PERDIDO')
-                                <div class="h-1 bg-red-500 rounded-full" style="width: 100%"></div>
-                                @break
-
-                                @case('COTIZADO')
+                                @case('ACEPTADA')
                                 <div class="h-1 bg-yellow-400 rounded-full" style="width: 50%"></div>
                                 @break
-
+                                @case('PAGADO')
+                                <div class="h-1 bg-green-400 rounded-full" style="width: 100%"></div>
+                                @break
                                 @default
                                 @endswitch
-
                             </div>
                         </td>
                     </tr>
