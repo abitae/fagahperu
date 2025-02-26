@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire\Forms;
 
 use App\Exports\ProductsExport;
@@ -33,7 +32,7 @@ class ProductForm extends Form
     public $stock = '';
     public $dias_entrega = 0;
     #[Validate('required')]
-    public $description = '';//
+    public $description = ''; //
     public $tipo = '';
     public $color = '';
     #[Validate('required')]
@@ -46,66 +45,20 @@ class ProductForm extends Form
     #[Validate('nullable|sometimes|mimes:pdf|max:10960|extensions:pdf')] // 1MB Max
     public $archivo2 = '';
     public $isActive = false;
+
     public function setProduct(Product $product)
     {
         $this->product = $product;
-        $this->brand_id = $product->brand_id;
-        $this->category_id = $product->category_id;
-        $this->line_id = $product->line_id;
-        $this->code = $product->code;
-        $this->code_fabrica = $product->code_fabrica;
-        $this->code_peru = $product->code_peru;
-        $this->price_compra = $product->price_compra;
-        $this->price_venta = $product->price_venta;
-        $this->porcentaje = $product->porcentaje;
-        $this->stock = $product->stock;
-        $this->dias_entrega = $product->dias_entrega;
-        $this->description = $product->description;
-        $this->tipo = $product->tipo;
-        $this->color = $product->color;
-        $this->garantia = $product->garantia;
-        $this->observaciones = $product->observaciones;
-        $this->image = $product->image;
-        $this->archivo = $product->archivo;
-        $this->archivo2 = $product->archivo2;
+        $this->fill($product->toArray());
     }
+
     public function store()
     {
-
         try {
             $this->validate();
-            if (gettype($this->image) != 'string') {
-
-                $this->image = $this->image->store('product/image');
-            }
-            if (gettype($this->archivo) != 'string') {
-
-                $this->archivo = $this->archivo->store('product/pdf');
-            }
-            if (gettype($this->archivo2) != 'string') {
-                $this->archivo2 = $this->archivo2->store('product/pdf2');
-            }
-            Product::create([
-                'brand_id' => $this->brand_id,
-                'category_id' => $this->category_id,
-                'line_id' => $this->line_id,
-                'code' => $this->code,
-                'code_fabrica' => $this->code_fabrica,
-                'code_peru' => $this->code_peru,
-                'price_compra' => $this->price_compra,
-                'price_venta' => $this->price_venta,
-                'porcentaje' => $this->porcentaje,
-                'stock' => $this->stock,
-                'dias_entrega' => $this->dias_entrega,
-                'description' => $this->description,
-                'tipo' => $this->tipo,
-                'color' => $this->color,
-                'garantia' => $this->garantia,
-                'observaciones' => $this->observaciones,
-                'image' => $this->image,
-                'archivo' => $this->archivo,
-                'archivo2' => $this->archivo2,
-            ]);
+            //dd($this->validate());
+            $this->handleFileUploads();
+            Product::create($this->getProductData());
             infoLog('Product store form', $this->code);
             return true;
         } catch (\Exception $e) {
@@ -113,42 +66,12 @@ class ProductForm extends Form
             return false;
         }
     }
+
     public function update()
     {
         try {
-
-            if (gettype($this->image) != 'string' && $this->image != null) {
-                Storage::delete($this->product->image);
-                $this->image = $this->image->store('product/image');
-            }
-            if (gettype($this->archivo) != 'string' && $this->archivo != null) {
-                Storage::delete($this->product->archivo);
-                $this->archivo = $this->archivo->store('product/pdf');
-            }
-            if (gettype($this->archivo2) != 'string' && $this->archivo2 != null) {
-                $this->archivo2 = $this->archivo2->store('product/pdf2');
-            }
-            $this->product->update([
-                'brand_id' => $this->brand_id,
-                'category_id' => $this->category_id,
-                'line_id' => $this->line_id,
-                'code' => $this->code,
-                'code_fabrica' => $this->code_fabrica,
-                'code_peru' => $this->code_peru,
-                'price_compra' => $this->price_compra,
-                'price_venta' => $this->price_venta,
-                'porcentaje' => $this->porcentaje,
-                'stock' => $this->stock,
-                'dias_entrega' => $this->dias_entrega,
-                'description' => $this->description,
-                'tipo' => $this->tipo,
-                'color' => $this->color,
-                'garantia' => $this->garantia,
-                'observaciones' => $this->observaciones,
-                'image' => $this->image,
-                'archivo' => $this->archivo,
-                'archivo2' => $this->archivo2,
-            ]);
+            $this->handleFileUploads(true);
+            $this->product->update($this->getProductData());
             infoLog('Product update form', $this->code);
             return true;
         } catch (\Exception $e) {
@@ -156,6 +79,7 @@ class ProductForm extends Form
             return false;
         }
     }
+
     public function destroy($id)
     {
         try {
@@ -168,11 +92,12 @@ class ProductForm extends Form
             return false;
         }
     }
+
     public function estado($id)
     {
         try {
-            $product = Product::find($id);
-            $product->isActive = !$product->isActive;
+            $product           = Product::find($id);
+            $product->isActive = ! $product->isActive;
             $product->save();
             infoLog('Product estado ' . $product->isActive, $product->code);
             return true;
@@ -181,8 +106,64 @@ class ProductForm extends Form
             return false;
         }
     }
+
     public function export()
     {
         return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
+    private function handleFileUploads($isUpdate = false)
+    {
+        if ($isUpdate) {
+            $this->deleteOldFiles();
+        }
+
+        if (gettype($this->image) != 'string' && $this->image != null) {
+            $this->image = $this->image->store('product/image');
+        }
+        if (gettype($this->archivo) != 'string' && $this->archivo != null) {
+            $this->archivo = $this->archivo->store('product/pdf');
+        }
+        if (gettype($this->archivo2) != 'string' && $this->archivo2 != null) {
+            $this->archivo2 = $this->archivo2->store('product/pdf2');
+        }
+    }
+
+    private function deleteOldFiles()
+    {
+        if ($this->product->image && gettype($this->image) != 'string') {
+            Storage::delete($this->product->image);
+        }
+        if ($this->product->archivo && gettype($this->archivo) != 'string') {
+            Storage::delete($this->product->archivo);
+        }
+        if ($this->product->archivo2 && gettype($this->archivo2) != 'string') {
+            Storage::delete($this->product->archivo2);
+        }
+    }
+
+    private function getProductData()
+    {
+        return [
+            'brand_id'      => $this->brand_id,
+            'category_id'   => $this->category_id,
+            'line_id'       => $this->line_id,
+            'code'          => $this->code,
+            'code_fabrica'  => $this->code_fabrica,
+            'code_peru'     => $this->code_peru,
+            'price_compra'  => $this->price_compra,
+            'price_venta'   => $this->price_venta,
+            'porcentaje'    => $this->porcentaje,
+            'stock'         => $this->stock,
+            'dias_entrega'  => $this->dias_entrega,
+            'description'   => $this->description,
+            'tipo'          => $this->tipo,
+            'color'         => $this->color,
+            'garantia'      => $this->garantia,
+            'observaciones' => $this->observaciones,
+            'image'         => $this->image,
+            'archivo'       => $this->archivo,
+            'archivo2'      => $this->archivo2,
+        ];
     }
 }

@@ -26,7 +26,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500" aria-current="page">
-                                    Config
+                                    Catalogo
                                 </span>
                             </div>
                         </li>
@@ -39,7 +39,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500" aria-current="page">
-                                    Users
+                                    Productos
                                 </span>
                             </div>
                         </li>

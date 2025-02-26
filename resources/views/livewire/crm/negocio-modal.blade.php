@@ -78,8 +78,8 @@
                 <div class="col-span-6 sm:col-span-3">
                     <x-select-input wire:model.live='negocioForm.stage' for='stage' label='Estado'>
                         <option value="">--Select--</option>
-                        <option value="COTIZADO">EN PROCESO</option>
-                        <option value="PERDIDO">ACEPTADA</option>
+                        <option value="PROCESO">PROCESO</option>
+                        <option value="ACEPTADA">ACEPTADA</option>
                         <option value="PAGADO">PAGADO</option>
                     </x-select-input>
                 </div>

@@ -51,7 +51,7 @@
             </div>
             <div class="grid grid-cols-4 grid-rows-1 gap-1">
                 <div>
-                    <img width="120" height="120" src="{{ asset(" storage/$product->image") }}">
+                    <img width="120" height="120" src="{{ asset("storage/$product->image") }}">
                 </div>
                 <div>
                     <p class="mb-1 text-xs text-hover-primary">
@@ -60,12 +60,19 @@
                         {{ $product->code_fabrica }}</p>
                     <p class="mb-1 text-xs text-hover-primary">
                         {{ $product->code_peru }}</p>
+                    @if ($product->archivo)
                     <a target="_blank" href='{{ asset("storage/$product->archivo") }}'
                         class="mb-1 text-xs text-green-600 bg-yellow-200 text-hover-primary">
                         Ficha Tecnica</a>
+                    @endif
+                    @if ($product->archivo2)
                     <a target="_blank" href='{{ asset("storage/$product->archivo2") }}'
                         class="mb-1 text-xs text-yellow-600 bg-green-500 text-hover-primary">
                         Certificado</a>
+                    @endif
+
+
+
                 </div>
                 <div>
                     <p class="mb-1 text-xs text-hover-primary">

@@ -28,6 +28,7 @@ class ContactLive extends Component
     public function mount()
     {
         $this->dateNow = Carbon::now('GMT-5')->format('Y-m-d');
+        $this->contactForm->date_brinday = Carbon::now('GMT-5')->format('dd/mm/aaaa');
     }
     #[Computed]
     public function contacts()

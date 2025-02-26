@@ -71,6 +71,7 @@ class ProductLive extends Component
                 $query->where('stock', '>=', $this->stockFilter);
             })
             ->where('isActive', $this->isActive)
+            ->latest()
             ->paginate($this->num, '*', 'page');
     }
     public function render()
@@ -105,7 +106,6 @@ class ProductLive extends Component
     }
     public function createProduct()
     {
-        //dd($this->productForm->all());
         if ($this->productForm->store()) {
             $this->message('success', 'En hora buena!', 'Registro creado correctamente!');
             $this->isOpenModal = false;

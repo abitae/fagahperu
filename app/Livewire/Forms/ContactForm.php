@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Exports\ContactsExport;
 use App\Models\Contact;
+use Carbon\Carbon;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,8 +21,8 @@ class ContactForm extends Form
     public $first_name = '';
     #[Validate('required')]
     public $last_name = '';
-    #[Validate('required')]
-    public $date_brinday = '';
+    #[Validate('')]
+    public $date_brinday = '2025-01-01';
     #[Validate('')]
     public $phone = '';
     #[Validate('email')]

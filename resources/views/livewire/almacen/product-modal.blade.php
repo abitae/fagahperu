@@ -64,8 +64,9 @@
 @endif
 <!--end::Modal - New Card-->
 @if ($isOpenModal)
-    <x-modal title="{{ isset($productForm->product) ? 'Update product' : 'Create product' }}" maxWidth='4xl'>
-        <form class="form" wire:submit="{{ isset($productForm->product) ? 'updateProduct' : 'createProduct' }}">
+    <x-modal title="{{ isset($productForm->product) ? 'ACTUALIZAR PRODUCTO' : 'CREAR PRODUCTO' }}" maxWidth='4xl'>
+
+        <form class="form" wire:submit.prevent="{{ isset($productForm->product) ? 'updateProduct' : 'createProduct' }}">
             <div x-data="{ openTab: 1 }">
                 <div class="w-full bg-white dark:bg-gray-800">
                     <div class="flex p-2 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:text-white">
