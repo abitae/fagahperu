@@ -56,9 +56,9 @@ class ProductForm extends Form
     {
         try {
             $this->validate();
-            //dd($this->validate());
             $this->handleFileUploads();
             Product::create($this->getProductData());
+            $this->reset();
             infoLog('Product store form', $this->code);
             return true;
         } catch (\Exception $e) {
@@ -72,6 +72,7 @@ class ProductForm extends Form
         try {
             $this->handleFileUploads(true);
             $this->product->update($this->getProductData());
+            $this->reset();
             infoLog('Product update form', $this->code);
             return true;
         } catch (\Exception $e) {
@@ -85,6 +86,7 @@ class ProductForm extends Form
         try {
             $product = Product::find($id);
             $product->delete();
+            $this->reset();
             infoLog('Product deleted form', $product->code);
             return true;
         } catch (\Exception $e) {
@@ -99,6 +101,7 @@ class ProductForm extends Form
             $product           = Product::find($id);
             $product->isActive = ! $product->isActive;
             $product->save();
+            $this->reset(); 
             infoLog('Product estado ' . $product->isActive, $product->code);
             return true;
         } catch (\Exception $e) {

@@ -17,13 +17,13 @@ class EntryForm extends Form
     public $inventory_id = '';
     #[Validate('required')]
     public $supplier_id = '';
-    #[Validate('required')]
+    #[Validate('')]
     public $description = '';
     #[Validate('required|min:5|unique:brands')]
     public $entry_code = '';
     #[Validate('required|numeric|min:0')]
     public $quantity = '';
-    #[Validate('required|numeric|min:0')]
+    #[Validate('numeric|min:0')]
     public $unit_price = '';
 
     public function store($warehouse, $product, $supplier)
@@ -32,7 +32,7 @@ class EntryForm extends Form
 
             $inventario = Inventory::where('warehouse_id', $warehouse->id)
                 ->where('product_id', $product)->first();
-            
+
             if (!$inventario) {
                 $inventario = new Inventory();
                 $inventario->warehouse_id = $warehouse->id;

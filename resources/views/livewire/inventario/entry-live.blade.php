@@ -121,12 +121,12 @@
                                                 <input min="0" step=".01" type="number"
                                                     wire:model.live='entryForm.unit_price' id="unit_price"
                                                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    placeholder="Precio unitario" required="">
+                                                    placeholder="Precio unitario">
                                             </div>
                                             <div class="col-span-6 sm:col-span-6">
                                                 <x-area-input wire:model.live='entryForm.description' type='text'
                                                     for='description' label='Description'
-                                                    placeholder='Ingrese descripcion' required>
+                                                    placeholder='Ingrese descripcion'>
                                                 </x-area-input>
                                             </div>
                                             <div class="col-span-6 sm:col-full">

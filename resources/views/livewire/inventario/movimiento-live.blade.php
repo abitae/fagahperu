@@ -57,7 +57,7 @@
                             <div class="w-full">
                                 <div
                                     class="space-y-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                                    <form class="max-w-full mx-auto">
+                                    <div class="max-w-full mx-auto">
                                         <label for="default-search"
                                             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                                         <div class="relative">
@@ -76,7 +76,7 @@
                                                 placeholder="Buscar codigo entrada" required />
 
                                         </div>
-                                    </form>
+                                    </div>
                                     <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
                                         <thead class="bg-gray-300 dark:bg-gray-700">
                                             <tr>
@@ -94,8 +94,7 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody
-                                            class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                             @forelse ($inventories as $item)
                                                 <tr wire:key='productStore-{{ $item->id }}'
                                                     class="hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -127,7 +126,7 @@
                                                                     <tr>
                                                                         <td
                                                                             class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $entry->supplier->first_name }}
+                                                                            {{ $entry->supplier->first_name ? 'No existe proveedores' }}
                                                                         </td>
                                                                         <td
                                                                             class="text-xs font-normal text-gray-500 dark:text-gray-400">
@@ -187,6 +186,7 @@
                                                     </td>
                                                 </tr>
                                             @empty
+                                                <p>No hay movimientos</p>
                                             @endforelse
                                         </tbody>
                                     </table>
