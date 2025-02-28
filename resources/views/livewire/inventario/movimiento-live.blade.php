@@ -64,8 +64,7 @@
                                             <div
                                                 class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 20 20">
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                     <path stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round" stroke-width="2"
                                                         d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -94,99 +93,87 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                        <tbody
+                                            class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                             @forelse ($inventories as $item)
-                                                <tr wire:key='productStore-{{ $item->id }}'
-                                                    class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                    <td
-                                                        class="p-4 text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                        <p>{{ $item->warehouse->name }}</p>
-                                                        <p>{{ $item->product->code_entrada }}</p>
-                                                        <p>{{ $item->quantity }}</p>
+                                            <tr wire:key='productStore-{{ $item->id }}'
+                                                class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <td class="p-4 text-xs font-normal text-gray-500 dark:text-gray-400">
+                                                    <div class="grid grid-cols-2 gap-1">
+                                                        <div>ALMACEN</div>
+                                                        <div>
+                                                            {{ $item->warehouse->name }}
+                                                        </div>
+                                                        <div>CODIGO ENTRY</div>
+                                                        <div>
+                                                            {{ $item->product->code_entrada }}
+                                                        </div>
+                                                        <div>STOCK</div>
+                                                        <div>
+                                                            {{ $item->quantity }}
+                                                        </div>
 
-                                                    </td>
-                                                    <td
-                                                        class="text-xs font-normal text-gray-500 bg-green-200 dark:text-gray-400">
+                                                    </div>
 
-                                                        <table
-                                                            class='max-w-full text-left divide-y divide-gray-200 table-fixed dark:divide-gray-600'>
-                                                            <thead>
-                                                                <th>
-                                                                    Proveedor
-                                                                </th>
-                                                                <th>
-                                                                    Cantidad
-                                                                </th>
-                                                                <th>
-                                                                    Fecha
-                                                                </th>
-                                                            </thead>
-                                                            <tbody>
-                                                                @forelse($item->entries as $entry)
-                                                                    <tr>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $entry->supplier->first_name ?? 'No existe proveedores' }}
-                                                                        </td>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $entry->quantity }}
-                                                                        </td>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $entry->created_at->format('d/m/Y') }}
-                                                                        </td>
-                                                                    </tr>
-                                                                @empty
-                                                                    No hay datos
-                                                                @endforelse
-                                                            </tbody>
-                                                        </table>
+                                                </td>
+                                                <td>
 
+                                                    @forelse($item->entries as $entry)
+                                                    <div class="grid grid-cols-2 gap-1 text-xs font-normal text-gray-500 bg-green-200 dark:text-gray-400">
+                                                        <div>
+                                                            PROVEEDOR
+                                                        </div>
+                                                        <div  class="grid-span-2">
+                                                            {{ $entry->supplier->first_name ?? '' }}
+                                                        </div>
+                                                        <div>FECHA</div>
+                                                        <div class="grid-span-2">
+                                                            {{ $entry->created_at->format('d/m/Y') }}
+                                                        </div>
+                                                        <div>CODIGO</div>
+                                                        <div>
+                                                            {{ $entry->entry_code }}
+                                                        </div>
+                                                        <div>CANTIDAD</div>
+                                                        <div>
+                                                            {{ $entry->quantity }}
+                                                        </div>
+                                                    </div>
+                                                    @empty
+                                                    No hay datos
+                                                    @endforelse
+                                                </td>
+                                                <td>
 
-                                                    </td>
-                                                    <td
-                                                        class="text-xs font-normal text-gray-500 bg-red-200 dark:text-gray-400">
+                                                    @forelse($item->exits as $exit)
+                                                    <div class="grid grid-cols-2 gap-1 text-xs font-normal text-gray-500 bg-red-200 dark:text-gray-400">
+                                                        <div>
+                                                            CLIENTE
+                                                        </div>
+                                                        <div  class="grid-span-2">
+                                                            {{ $exit->customer->first_name ?? '' }}
+                                                        </div>
+                                                        <div>FECHA</div>
+                                                        <div class="grid-span-2">
+                                                            {{ $exit->created_at->format('d/m/Y') }}
+                                                        </div>
+                                                        <div>CODIGO</div>
+                                                        <div>
+                                                            {{ $exit->exit_code }}
+                                                        </div>
+                                                        <div>CANTIDAD</div>
+                                                        <div>
+                                                            {{ $exit->quantity }}
+                                                        </div>
+                                                    </div>
+                                                    @empty
+                                                    No hay datos
+                                                    @endforelse
 
-                                                        <table
-                                                            class='max-w-full text-left divide-y divide-gray-200 table-fixed dark:divide-gray-600'>
-                                                            <thead>
-                                                                <th>
-                                                                    Cliente
-                                                                </th>
-                                                                <th>
-                                                                    Cantidad
-                                                                </th>
-                                                                <th>
-                                                                    Fecha
-                                                                </th>
-                                                            </thead>
-                                                            <tbody>
-                                                                @forelse($item->exits as $exit)
-                                                                    <tr>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $exit->customer->first_name }}
-                                                                        </td>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $exit->quantity }}
-                                                                        </td>
-                                                                        <td
-                                                                            class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $exit->created_at->format('d/m/Y') }}
-                                                                        </td>
-                                                                    </tr>
-                                                                @empty
-                                                                    No hay datos
-                                                                @endforelse
-                                                            </tbody>
-                                                        </table>
-
-                                                    </td>
-                                                </tr>
+                                                </td>
+                                            </tr>
                                             @empty
-                                                <p>No hay movimientos</p>
+                                            <p>No hay movimientos</p>
                                             @endforelse
                                         </tbody>
                                     </table>

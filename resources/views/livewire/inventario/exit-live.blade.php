@@ -73,35 +73,34 @@
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                                                         @forelse ($customers as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->id }}
-                                                                {{ $item->first_name }}
-                                                                {{ $item->last_name }}</option>
+                                                        <option value="{{ $item->id }}">{{ $item->id }}
+                                                            {{ $item->first_name }}
+                                                            {{ $item->last_name }}</option>
                                                         @empty
                                                         @endforelse
                                                     </select>
                                                 </div>
                                                 @error('exitForm.customer_id')
-                                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
-                                                            class="font-medium">Error!</span>
-                                                        {{ $message }}.</p>
+                                                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                                        class="font-medium">Error!</span>
+                                                    {{ $message }}.</p>
                                                 @enderror
                                             </div>
                                             <div wire:ignore class="col-span-3 sm:col-span-3">
                                                 <label for="product_id">Producto</label>
                                                 <select wire:model.live="exitForm.product_id" id="product_id"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
                                                     @forelse ($products as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->id }}
-                                                            {{ $item->code_entrada }}
-                                                        </option>
+                                                    <option value="{{ $item->id }}">{{ $item->id }}
+                                                        {{ $item->code_entrada }}
+                                                    </option>
                                                     @empty
                                                     @endforelse
                                                 </select>
                                                 @error('exitForm.product_id')
-                                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
-                                                            class="font-medium">Error!</span>
-                                                        {{ $message }}.</p>
+                                                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                                        class="font-medium">Error!</span>
+                                                    {{ $message }}.</p>
                                                 @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-6">
@@ -109,10 +108,10 @@
                                                     class="block text-sm font-medium text-gray-900 dark:text-white">
                                                     Codigo Salida
                                                 </label>
-                                                <select wire:model.live="isActive" id="isActive"
+                                                <select wire:model.live="exitForm.exit_code" id="exit_code"
                                                     class=" space-x-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     @forelse($exit_codes as $item)
-                                                        <option value="1">{{ $item->name }}</option>
+                                                    <option value="1">{{ $item->name }}</option>
                                                     @empty
                                                     @endforelse
                                                 </select>
@@ -145,9 +144,9 @@
                                             </div>
                                             <div class="col-span-6 sm:col-full">
                                                 @if ($product)
-                                                    <x-button.button-primary type='submit'>
-                                                        Guardar
-                                                    </x-button.button-primary>
+                                                <x-button.button-primary type='submit'>
+                                                    Guardar
+                                                </x-button.button-primary>
                                                 @endif
                                             </div>
                                         </div>
@@ -162,8 +161,8 @@
     </div>
 </div>
 @push('js')
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             $('#customer_id').select2({
                 theme: "classic",
                 width: 'resolve',
@@ -181,5 +180,5 @@
                 @this.set('product', $(this).val());
             });
         });
-    </script>
+</script>
 @endpush

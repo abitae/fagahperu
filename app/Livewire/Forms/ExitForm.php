@@ -1,14 +1,10 @@
 <?php
-
 namespace App\Livewire\Forms;
-
 
 use App\Models\Inventory;
 use App\Models\InventoryExit;
-use App\Models\ProductStore;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-
 
 class ExitForm extends Form
 {
@@ -31,9 +27,9 @@ class ExitForm extends Form
         try {
             $inventario = Inventory::where('warehouse_id', $warehouse->id)
                 ->where('product_id', $product)->first();
-            if (!$inventario){
+            if (! $inventario) {
                 return false;
-            }else{
+            } else {
                 //dd($inventario->quantity,$this->quantity);
                 $inventario->quantity -= $this->quantity;
                 if ($inventario->quantity < 0) {
@@ -44,11 +40,11 @@ class ExitForm extends Form
 
             InventoryExit::create([
                 'inventory_id' => $inventario->id,
-                'customer_id' => $customer,
-                'description' => $this->description,
-                'exit_code' => $this->exit_code,
-                'quantity' => $this->quantity,
-                'unit_price' => $this->unit_price
+                'customer_id'  => $customer,
+                'description'  => $this->description,
+                'exit_code'    => $this->exit_code,
+                'quantity'     => $this->quantity,
+                'unit_price'   => $this->unit_price,
             ]);
             infoLog('InventoryExit store', $this->exit_code);
             return true;
@@ -84,8 +80,8 @@ class ExitForm extends Form
     public function estado($id)
     {
         try {
-            $entry = InventoryExit::find($id);
-            $entry->isActive = !$entry->isActive;
+            $entry           = InventoryExit::find($id);
+            $entry->isActive = ! $entry->isActive;
             $entry->save();
             infoLog('InventoryExit estado ' . $entry->isActive, $entry->name);
             return true;
