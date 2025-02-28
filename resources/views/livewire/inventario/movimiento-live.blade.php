@@ -126,7 +126,7 @@
                                                                     <tr>
                                                                         <td
                                                                             class="text-xs font-normal text-gray-500 dark:text-gray-400">
-                                                                            {{ $entry->supplier->first_name ? 'No existe proveedores' }}
+                                                                            {{ $entry->supplier->first_name ?? 'No existe proveedores' }}
                                                                         </td>
                                                                         <td
                                                                             class="text-xs font-normal text-gray-500 dark:text-gray-400">
