@@ -17,18 +17,11 @@
         }
     </script>
 </head>
-
 <body class="bg-gray-50 dark:bg-gray-800">
     <main class="bg-gray-50 dark:bg-gray-900">
-        <div class="h-14 bg-gradient-to-r from-violet-300 to-fuchsia-500 flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0">
-
+        <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto bg-gray-300 h-14 md:h-screen pt:mt-0">
             {{ $slot}}
-
         </div>
     </main>
-
-
 </body>
-
-
 </html>

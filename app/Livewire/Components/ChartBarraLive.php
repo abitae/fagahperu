@@ -12,9 +12,9 @@ class ChartBarraLive extends Component
     public function render()
     {
         $series = [
-            $this->serieChart("En Proceso",'#9B0EEA','EN PROCESO'),
-            $this->serieChart("Aceptado",'#FF0000','ACEPTADO'),
-            $this->serieChart("Perdido",'#00FF00','PERDIDO')
+            $this->serieChart("Proceso",'#9B0EEA','PROCESO'),
+            $this->serieChart("Aceptado",'#FF0000','ACEPTADA'),
+            $this->serieChart("Perdido",'#00FF00','PAGADO')
         ];
         $name = "name";
         $categories = $this->categoryChart();

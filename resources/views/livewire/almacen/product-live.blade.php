@@ -78,7 +78,7 @@
                     <x-select-input wire:model.live.debounce.200ms="lineFilter" for='rol' label=''>
                         <option>*Lineas</option>
                         @forelse ($this->lines as $line)
-                            <option value="{{ $line->id }}">{{ $line->name }}</option>
+                        <option value="{{ $line->id }}">{{ $line->name }}</option>
                         @empty
                         @endforelse
                     </x-select-input>
@@ -87,7 +87,7 @@
                     <x-select-input wire:model.live.debounce.200ms="categoryFilter" for='rol' label=''>
                         <option>*Categorias</option>
                         @forelse ($this->categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @empty
                         @endforelse
                     </x-select-input>
@@ -96,7 +96,7 @@
                     <x-select-input wire:model.live.debounce.200ms="brandFilter" for='rol' label=' '>
                         <option>*Marcas</option>
                         @forelse ($this->brands as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @empty
                         @endforelse
                     </x-select-input>
@@ -118,6 +118,29 @@
                     </x-select-input>
                 </div>
             </div>
+        </div>
+        <div class="items-center sm:flex">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Default Card Example</h3>
+                    <div class="card-tools">
+                        <!-- Buttons, labels, and many other things can be placed here! -->
+                        <!-- Here is a label for example -->
+                        <span class="badge badge-primary">Label</span>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    The body of the card
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    The footer of the card
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
         </div>
     </div>
     @include('livewire.almacen.product-table')

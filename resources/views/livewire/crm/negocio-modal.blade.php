@@ -98,7 +98,6 @@
     </form>
 </x-modal>
 @endif
-
 @push('js')
 <script>
     $(document).ready(function() {
