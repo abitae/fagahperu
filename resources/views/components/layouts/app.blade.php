@@ -14,6 +14,8 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <x-livewire-alert::scripts />
 </head>
 
@@ -24,7 +26,7 @@
         <x-aside></x-aside>
     </div>
     <div class="p-4 lg:ml-64">
-        <div class="p-4 border-2 border-gray-200  border-dashed rounded-lg dark:border-gray-700 sm:mt-14">
+        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 sm:mt-14">
             {{ $slot }}
         </div>
         <x-footer></x-footer>

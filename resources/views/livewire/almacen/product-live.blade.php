@@ -70,78 +70,132 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-2 dark:bg-gray-800">
-        <div class="items-center sm:flex">
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <x-select-input wire:model.live.debounce.200ms="lineFilter" for='rol' label=''>
-                        <option>*Lineas</option>
-                        @forelse ($this->lines as $line)
-                        <option value="{{ $line->id }}">{{ $line->name }}</option>
-                        @empty
-                        @endforelse
-                    </x-select-input>
+        <div class="card card-outline collapsed-card">
+            <div class="card-header">
+                <h4 class="card-title">Filtros</h4>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
-                <div class="relative">
-                    <x-select-input wire:model.live.debounce.200ms="categoryFilter" for='rol' label=''>
-                        <option>*Categorias</option>
-                        @forelse ($this->categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @empty
-                        @endforelse
-                    </x-select-input>
-                </div>
-                <div class="relative">
-                    <x-select-input wire:model.live.debounce.200ms="brandFilter" for='rol' label=' '>
-                        <option>*Marcas</option>
-                        @forelse ($this->brands as $brand)
-                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                        @empty
-                        @endforelse
-                    </x-select-input>
-                </div>
-                <div class="relative">
-                    <x-select-input wire:model.live.debounce.200ms="num" for='rol' label=' '>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="1000">1000</option>
-                    </x-select-input>
-                </div>
-                <div class="relative">
-                    <x-select-input wire:model.live.debounce.200ms="isActive" for='rol' label=' '>
-                        <option>*Activo</option>
-                        <option value="1">SI</option>
-                        <option value="0">No</option>
-                    </x-select-input>
+            </div>
+            <div class="card-body">
+                <div class="items-center sm:flex">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <x-select-input wire:model.live.debounce.200ms="lineFilter" for='rol' label=''>
+                                <option>*Lineas</option>
+                                @forelse ($this->lines as $line)
+                                <option value="{{ $line->id }}">{{ $line->name }}</option>
+                                @empty
+                                @endforelse
+                            </x-select-input>
+                        </div>
+                        <div class="relative">
+                            <x-select-input wire:model.live.debounce.200ms="categoryFilter" for='rol' label=''>
+                                <option>*Categorias</option>
+                                @forelse ($this->categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @empty
+                                @endforelse
+                            </x-select-input>
+                        </div>
+                        <div class="relative">
+                            <x-select-input wire:model.live.debounce.200ms="brandFilter" for='rol' label=' '>
+                                <option>*Marcas</option>
+                                @forelse ($this->brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @empty
+                                @endforelse
+                            </x-select-input>
+                        </div>
+                        <div class="relative">
+                            <x-select-input wire:model.live.debounce.200ms="num" for='rol' label=' '>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="1000">1000</option>
+                            </x-select-input>
+                        </div>
+                        <div class="relative">
+                            <x-select-input wire:model.live.debounce.200ms="isActive" for='rol' label=' '>
+                                <option>*Activo</option>
+                                <option value="1">SI</option>
+                                <option value="0">No</option>
+                            </x-select-input>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="items-center sm:flex">
-            <div class="card">
+
+    </div>
+    <div class="pt-2 row">
+        <div class="col-md-12">
+            <div class="shadow-lg card card-success card-outline collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">Default Card Example</h3>
+                    <h3 class="card-title">Agregar nuevo producto</h3>
+
                     <div class="card-tools">
-                        <!-- Buttons, labels, and many other things can be placed here! -->
-                        <!-- Here is a label for example -->
-                        <span class="badge badge-primary">Label</span>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i
+                                class="fas fa-expand"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                class="fas fa-times"></i>
+                        </button>
                     </div>
                     <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    The body of the card
+                    <div class="grid grid-cols-4 gap-1">
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                    The footer of the card
-                </div>
-                <!-- /.card-footer -->
             </div>
             <!-- /.card -->
         </div>
+        <!-- /.col -->
     </div>
     @include('livewire.almacen.product-table')
 </div>
