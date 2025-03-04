@@ -129,73 +129,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="pt-2 row">
-        <div class="col-md-12">
-            <div class="shadow-lg card card-success card-outline collapsed-card">
-                <div class="card-header">
-                    <h3 class="card-title">Agregar nuevo producto</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i
-                                class="fas fa-expand"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <!-- /.card-tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <div class="grid grid-cols-4 gap-1">
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-        <!-- /.col -->
-    </div>
+    @include('livewire.almacen.product-form')
     @include('livewire.almacen.product-table')
 </div>

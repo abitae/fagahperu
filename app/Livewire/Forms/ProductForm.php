@@ -56,15 +56,16 @@ class ProductForm extends Form
     {
         try {
             $this->validate();
-            //dd($this->validate());
             $this->handleFileUploads();
             Product::create($this->getProductData());
             infoLog('Product store form', $this->code);
+
             return true;
         } catch (\Exception $e) {
             errorLog('Product store form', $e);
             return false;
         }
+        $this->reset();
     }
 
     public function update()
@@ -78,6 +79,7 @@ class ProductForm extends Form
             errorLog('Product update form', $e);
             return false;
         }
+        $this->reset();
     }
 
     public function destroy($id)
