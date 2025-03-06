@@ -333,4 +333,12 @@ class ProductLive extends Component
             return false;
         }
     }
+    public function deleteFilter()
+    {
+        $this->stockFilter = null;
+        $this->categoryFilter = null;
+        $this->lineFilter = null;
+        $this->brandFilter = null;
+        $this->search = null;
+    }
 }
