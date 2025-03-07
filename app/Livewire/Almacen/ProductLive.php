@@ -23,7 +23,7 @@ class ProductLive extends Component
     use WithFileUploads;
     public ProductForm $productForm;
     public $search            = '';
-    public $num               = 10;
+    public $num               = 100;
     public $isActive          = true;
     public $isOpenModal       = false;
     public $isOpenModalExport = false;
