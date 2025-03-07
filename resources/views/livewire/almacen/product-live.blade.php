@@ -63,6 +63,9 @@
                     <x-button.button-pluss-purple wire:click="create">
                         Create
                     </x-button.button-pluss-purple>
+                    <x-button.button-download2 wire:click="export">
+                        Exportar
+                    </x-button.button-download2>
                     <x-button.button-primary wire:click="deleteFilter">
                         Limpiar Filtros
                     </x-button.button-primary>
