@@ -39,9 +39,9 @@ class ProductForm extends Form
     public $observaciones = '';
     #[Validate('nullable|sometimes|image|max:10960|mimes:jpeg,jpg,png|extensions:jpeg,jpg,png')]
     public $image = '';
-    #[Validate('nullable|sometimes|mimes:pdf|max:10960|extensions:pdf')] // 1MB Max
+    #[Validate('nullable|sometimes|mimes:pdf|max:20960|extensions:pdf')] // 1MB Max
     public $archivo = '';
-    #[Validate('nullable|sometimes|mimes:pdf|max:10960|extensions:pdf')] // 1MB Max
+    #[Validate('nullable|sometimes|mimes:pdf|max:20960|extensions:pdf')] // 1MB Max
     public $archivo2 = '';
     public $isActive = false;
 
