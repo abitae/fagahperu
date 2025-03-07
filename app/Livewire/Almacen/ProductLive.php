@@ -43,11 +43,11 @@ class ProductLive extends Component
     public $product_price_compra;
     public $product_price_venta;
     public $product_stock;
-    public $product_dias_entrega;
+    public $product_dias_entrega = 0;
     public $product_description; //
     public $product_tipo;
     public $product_color;
-    public $product_garantia;
+    public $product_garantia = '';
     public $product_observaciones;
     public $product_image;
     public $product_archivo;
@@ -212,7 +212,7 @@ class ProductLive extends Component
             'product_description'   => 'required|string',
             'product_tipo'          => 'string|max:100',
             'product_color'         => 'string|max:50',
-            'product_garantia'      => 'required|string|max:100',
+            'product_garantia'      => 'integer|min:0',
             'product_observaciones' => 'string',
             'product_image'         => 'nullable|image|max:2048',
             'product_archivo'       => 'nullable|mimes:pdf|max:10240',

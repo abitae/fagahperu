@@ -35,7 +35,6 @@ class ProductForm extends Form
     public $description = ''; //
     public $tipo = '';
     public $color = '';
-    #[Validate('required')]
     public $garantia = '';
     public $observaciones = '';
     #[Validate('nullable|sometimes|image|max:10960|mimes:jpeg,jpg,png|extensions:jpeg,jpg,png')]

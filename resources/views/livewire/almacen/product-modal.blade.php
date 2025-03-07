@@ -141,7 +141,7 @@
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <x-text-input wire:model.live='productForm.code_peru' type='text' for='code_peru'
-                                    label='Codigo fabrica' placeholder='Ingrese codigo CM' required />
+                                    label='Codigo ficha producto' placeholder='Ingrese código ficha producto' required />
                                 @error('productForm.code_peru')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                             class="font-medium">Error!</span> {{ $message }}.</p>
@@ -159,15 +159,6 @@
                                 @enderror
                             </div>
                             <div class="col-span-6 sm:col-span-2">
-                                <x-text-input wire:model.live='productForm.porcentaje' type='number' min="0"
-                                    step="0.1" for='porcentaje' label='Porcentaje'
-                                    placeholder='Ingrese porcentaje' />
-                                @error('productForm.porcentaje')
-                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
-                                            class="font-medium">Error!</span> {{ $message }}.</p>
-                                @enderror
-                            </div>
-                            <div class="col-span-6 sm:col-span-2">
                                 <x-text-input wire:model.live='productForm.price_venta' type='number' min="0"
                                     step=".01" for='price_venta' label='Precio de Venta'
                                     placeholder='Ingrese precio Venta' required />
@@ -176,31 +167,11 @@
                                             class="font-medium">Error!</span> {{ $message }}.</p>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-2">
                                 <x-text-input wire:model.live='productForm.stock' type='number' min="0"
                                     step="1" for='stock' label='Stock' placeholder='Ingrese Stock'
                                     required />
                                 @error('productForm.stock')
-                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
-                                            class="font-medium">Error!</span> {{ $message }}.</p>
-                                @enderror
-                            </div>
-                            <div class="col-span-6 sm:col-span-2">
-                                <x-text-input wire:model.live='productForm.dias_entrega' type='number'
-                                    min="0" step="1" for='dias_entrega' label='Dias entrega'
-                                    placeholder='Ingrese dias entrega' />
-                                @error('productForm.dias_entrega')
-                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
-                                            class="font-medium">Error!</span> {{ $message }}.</p>
-                                @enderror
-                            </div>
-                            <div class="col-span-6 sm:col-span-2">
-                                <x-text-input wire:model.live='productForm.garantia' type='number' min="0"
-                                    step="1" for='garantia' label='Meses de garantia'
-                                    placeholder='Ingrese garantia' required />
-                                @error('productForm.garantia')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                             class="font-medium">Error!</span> {{ $message }}.</p>
                                 @enderror
@@ -302,7 +273,7 @@
                     Cancel
                 </x-button.button-danger>
                 <x-button.button-save type='submit'>
-                    Guardar
+                    Guardar2
                 </x-button.button-save>
             </div>
         </form>
