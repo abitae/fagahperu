@@ -21,7 +21,7 @@ class ProductsImport implements ToModel
             return null;
         }
         $porciones = explode(" ", $row[1]);
-        $products = ProductData::where('cod_acuerdo_marco', $porciones[0])->delete();
+        
         return new ProductData([
             'cod_acuerdo_marco'     => $porciones[0],
             'ruc_proveedor'    => $row[2],
@@ -70,5 +70,5 @@ class ProductsImport implements ToModel
             'total_monto' => $row[53],
         ]);
     }
-    
+
 }

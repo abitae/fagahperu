@@ -3,6 +3,7 @@
 namespace App\Livewire\Convenio;
 
 use App\Imports\ProductsImport;
+use App\Models\ProductData;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -26,6 +27,7 @@ class ImportProductLive extends Component
             return;
         }
         try {
+            $products = ProductData::where('cod_acuerdo_marco', 'EXT-CE-2024-11' )->delete();
             Excel::import(new ProductsImport, $this->file);
             $this->message('success', 'En hora buena!', 'Archivo procesado correctamente!');
             $this->file = null;
@@ -36,7 +38,7 @@ class ImportProductLive extends Component
             errorLog('CM import', $e);
         }
     }
-   
+
     private function message($tipo, $tittle, $message)
     {
         $this->alert($tipo, $tittle, [
