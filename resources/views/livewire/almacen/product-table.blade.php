@@ -48,7 +48,7 @@
                         @forelse ($this->products as $product)
                         <tr wire:key='producto-{{ $product->id }}' class="hover:bg-gray-100 dark:hover:bg-gray-700">
                             <td class="p-4 text-xs font-normal text-gray-500 dark:text-white">
-                                <img width="400" height="400" src="{{ asset("storage/$product->image") }}">
+                                <img class="max-w-full" src="{{ asset("storage/$product->image") }}">
                             </td>
                             <td class="p-4 text-xs font-normal text-gray-500 dark:text-white">
                                 <p class="mb-1 text-xs text-hover-primary">
