@@ -197,12 +197,13 @@ class ProductLive extends Component
             return;
         }
         try {
-            Excel::import(new ProductsCatalogoImport, $this->file);
+            $product = Excel::import(new ProductsCatalogoImport, $this->file);
+            //dd($product);
             $this->message('success', 'En hora buena!', 'Archivo procesado correctamente!');
             $this->file = null;
             infoLog('Import product catalogo', Auth::user()->name);
         } catch (\Exception $e) {
-            $this->message('error', 'Error!', 'No se pudo procesar el archivo! /n '.$e->getMessage());
+            $this->message('error', 'Error!', 'No se pudo procesar el archivo! /n '.$e);
             $this->file = null;
             errorLog('Import product catalogo '.Auth::user()->name, $e);
         }

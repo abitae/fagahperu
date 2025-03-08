@@ -19,13 +19,10 @@ class ProductsCatalogoImport implements ToModel, WithStartRow
      */
     public function model(array $row)
     {
-        $brand = Brand::where('name', $row[0])->firstOrFail();
-        $category = Category::where('name', $row[1])->firstOrFail();
-        $line = Line::where('name', $row[2])->firstOrFail();
         return new Product([
-            'brand_id' => $brand ? $brand->id : null,
-            'category_id' => $category ? $category->id : null,
-            'line_id' => $line ? $line->id : null,
+            'brand_id' => Brand::where('name', $row[0])->pluck('id')->first(),
+            'category_id' => Category::where('name', $row[1])->pluck('id')->first(),
+            'line_id' => Line::where('name', $row[2])->pluck('id')->first(),
             'code' => $row[3],
             'code_fabrica' => $row[4],
             'code_peru' => $row[5],
