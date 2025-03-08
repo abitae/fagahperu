@@ -60,16 +60,20 @@
 
                 </div>
                 <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
-                    <x-button.button-pluss-purple wire:click="create">
-                        Create
-                    </x-button.button-pluss-purple>
-                    <x-button.button-download2 wire:click="export">
-                        Exportar
-                    </x-button.button-download2>
                     <x-button.button-primary wire:click="deleteFilter">
                         Limpiar Filtros
                     </x-button.button-primary>
+                    <x-button.button-pluss-purple wire:click="create">
+                        Create
+                    </x-button.button-pluss-purple>
                     @include('livewire.almacen.product-modal')
+                    <x-button.button-download wire:click="export">
+                        Exportar
+                    </x-button.button-download>
+                    <x-button.button-upload wire:click="modalImport">
+                        Importar
+                    </x-button.button-upload>
+                    @include('livewire.almacen.product-import')
                 </div>
             </div>
         </div>
@@ -118,7 +122,7 @@
                     <option value="0">No</option>
                 </x-select-input>
             </div>
-            
+
         </div>
     </div>
     @include('livewire.almacen.product-table')

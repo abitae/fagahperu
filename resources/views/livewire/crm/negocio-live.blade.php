@@ -45,56 +45,50 @@
                         </li>
                     </ol>
                 </nav>
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-                    All negocios
+                <h1 class="text-xl font-semibold text-gray-900 md:text-2xl dark:text-white">
+                    Negocios
                 </h1>
             </div>
 
-            <div class="sm:flex">
-                <div
-                    class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
+            <div class="md:flex">
+                <div class="items-center md:flex md:divide-x md:divide-gray-100 md:mb-0 dark:divide-gray-700">
                     <label for="negocios-search" class="sr-only">Search</label>
-                    <div class="relative mt-1 lg:w-48xl:w-48">
+                    <div class="relative md:w-48 pr-2">
                         <input type="text" wire:model.live='search'
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Search for negocios">
                     </div>
-                    <div class="relative mt-1 lg:w-20 xl:w-20">
+                    <div class="relative md:w-20 pr-2">
                         <select wire:model.live="num" id="countries"
-                            class=" space-x-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="10">10</option>
                             <option value="20">20</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
                     </div>
-                    <div class="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0">
+                    <div class="relative md:w-40 pr-2">
                         <select wire:model.live="isActive" id="isActive"
-                            class=" space-x-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="1">Active</option>
                             <option value="0">Disabled</option>
                         </select>
                     </div>
-                    <div class="relative">
-                        <x-select-input wire:model.live.debounce.200ms="customerFilter" for='rol' label=' '>
+                    <div class="relative md:w-40 pr-2">
+                        <select wire:model.live="customerFilter" id="customerFilter"
+                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option>*Cliente</option>
                             @forelse ($customerTypes as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                             @empty
                             @endforelse
-                        </x-select-input>
+                        </select>
                     </div>
                 </div>
-                <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
+                <div class="flex items-center ml-auto space-x-2 md:space-x-3">
                     <x-button.button-pluss-purple wire:click="create">
                         Create
                     </x-button.button-pluss-purple>
-                    <x-button.button-download>
-                        Export
-                    </x-button.button-download>
-                    <x-button.button-upload>
-                        Import
-                    </x-button.button-upload>
                     <div>
                         @include('livewire.crm.negocio-modal')
                     </div>

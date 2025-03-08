@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Negocio;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -62,15 +63,15 @@ class NegocioLive extends Component
 
     public function render()
     {
-        $customers = Customer::all();
-        $users = User::all();
-        $customerTypes = CustomerType::all();
-        return view('livewire.crm.negocio-live', compact('customers', 'users', 'customerTypes'))->layout('components.layouts.app');;
+        $customers = Customer::where('isActive', 1)->get();
+        $users = User::where('isActive', 1)->get();
+        $customerTypes = CustomerType::where('isActive', 1)->get();
+        return view('livewire.crm.negocio-live', compact('customers', 'users', 'customerTypes'));
     }
 
     public function detail(Negocio $id)
     {
-        return \Redirect::route('crm.detail', [$id]);
+        return Redirect::route('crm.detail', [$id]);
     }
 
     public function create()

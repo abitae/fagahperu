@@ -73,7 +73,8 @@
                             Detalles <i class="fa-solid fa-list-check"></i></a>
                         <a x-on:click="openTab = 2" :class="{ 'bg-purple-600 text-white': openTab === 2 }"
                             class="flex-1 px-4 py-2 transition-all duration-300 rounded-md focus:outline-none focus:shadow-outline-blue">
-                            Archivos <i class="fa-solid fa-folder-open"></i></a>
+                            Archivos <i class="fa-solid fa-folder-open"></i>
+                        </a>
                     </div>
                     <div x-show="openTab === 1"
                         class="p-4 space-y-2 transition-all duration-300 bg-white border-4 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
