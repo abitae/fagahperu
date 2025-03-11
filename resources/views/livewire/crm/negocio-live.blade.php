@@ -46,20 +46,19 @@
                     </ol>
                 </nav>
                 <h1 class="text-xl font-semibold text-gray-900 md:text-2xl dark:text-white">
-                    Negocios
+                    Negocios {{$stageFilter}}
                 </h1>
             </div>
 
             <div class="md:flex">
                 <div class="items-center md:flex md:divide-x md:divide-gray-100 md:mb-0 dark:divide-gray-700">
-                    <label for="negocios-search" class="sr-only">Search</label>
                     <div class="relative md:w-48 pr-2">
-                        <input type="text" wire:model.live='search'
+                        <input type="search" wire:model.live='search'
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Search for negocios">
+                            placeholder="Buscar negocios">
                     </div>
                     <div class="relative md:w-20 pr-2">
-                        <select wire:model.live="num" id="countries"
+                        <select wire:model.live="num" id="num"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -75,13 +74,13 @@
                         </select>
                     </div>
                     <div class="relative md:w-40 pr-2">
-                        <select wire:model.live="customerFilter" id="customerFilter"
+                        <select wire:model.live="stageFilter" id="stageFilter"
                             class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option>*Cliente</option>
-                            @forelse ($customerTypes as $customer)
-                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                            @empty
-                            @endforelse
+                            <option value="">*Estado</option>
+                            <option value="PROCESO">PROCESO</option>
+                            <option value="ACEPTADA">ACEPTADA</option>
+                            <option value="PAGADO">PAGADO</option>
+
                         </select>
                     </div>
                 </div>

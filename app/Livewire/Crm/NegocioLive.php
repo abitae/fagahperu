@@ -28,6 +28,7 @@ class NegocioLive extends Component
     public $isOpenModalExport = false;
     public $dateNow;
     public $selectedOption;
+    public $stageFilter;
     protected $listeners = ['select2Changed' => 'handleSelect2Changed'];
 
     public function handleSelect2Changed($value)
@@ -43,22 +44,38 @@ class NegocioLive extends Component
     #[Computed]
     public function negocios()
     {
-        $search = $this->search;
-        return Negocio::where(function ($query) use ($search) {
-            $query->orWhereHas('customer', function ($query) use ($search) {
-                $query->where('code', 'like', '%' . $search . '%')
-                      ->orWhere('first_name', 'like', '%' . $search . '%');
-            })
-            ->orWhereHas('user', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('email', 'like', '%' . $search . '%');
-            })
-            ->orWhere('code', 'LIKE', '%' . $search . '%')
-            ->orWhere('name', 'LIKE', '%' . $search . '%');
-        })
-        ->where('isActive', $this->isActive)
-        ->latest()
-        ->paginate($this->num, '*', 'page');
+        $search = trim($this->search);
+        $query = Negocio::query();
+
+        // Only apply search filters if search term exists
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                // Search in customer relationship
+                $q->whereHas('customer', function ($subQuery) use ($search) {
+                    $subQuery->where('code', 'like', "%{$search}%")
+                            ->orWhere('first_name', 'like', "%{$search}%");
+                })
+                // Search in user relationship
+                ->orWhereHas('user', function ($subQuery) use ($search) {
+                    $subQuery->where('name', 'like', "%{$search}%")
+                            ->orWhere('email', 'like', "%{$search}%");
+                })
+                // Search in main table
+                ->orWhere('code', 'like', "%{$search}%")
+                ->orWhere('name', 'like', "%{$search}%");
+            });
+        }
+
+        // Apply stage filter if exists
+        if (!empty($this->stageFilter)) {
+            $query->where('stage', $this->stageFilter);
+        }
+
+        // Apply active status filter
+        $query->where('isActive', $this->isActive);
+
+        return $query->latest()
+                    ->paginate($this->num);
     }
 
     public function render()

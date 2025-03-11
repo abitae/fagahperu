@@ -50,7 +50,6 @@
             <div class="space-x-4 sm:flex">
                 <div
                     class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                    <label for="warehauses-id" class="sr-only">Search</label>
                     <div class="relative mt-1 lg:w-64 xl:w-96">
                         <x-select-input wire:model.live='warehouse_id' label='' for='warehouse'>
                             <option value="">Seleccione un almacen</option>
@@ -63,7 +62,6 @@
                 </div>
                 <div
                     class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                    <label for="search" class="sr-only">Search</label>
                     <div class="relative mt-1 lg:w-64 xl:w-96">
                         <input type="text" wire:model.live='search'
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -72,7 +70,6 @@
                 </div>
                 <div
                     class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                    <label for="search" class="sr-only">Search</label>
                     <div class="relative mt-1 lg:w-64 xl:w-96">
                         <a href='{{ route('inventario.product') }}'
                             class="inline-flex items-center justify-center px-3 text-sm font-medium text-white transition-colors bg-purple-600 border rounded-md whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground h-9">
@@ -88,7 +85,7 @@
         <div class="relative w-full align-middle">
             <div class="p-6 rounded-lg shadow-lg bg-background text-foreground">
                 <div class="flex items-center justify-between mb-6">
-                    <h1 class="text-2xl font-bold">Inventario</h1>
+                    <h1 class="text-2xl font-bold">Inventario {{$warehouse_id}}</h1>
                     <div class="flex gap-2">
                         @if ($warehouse_id)
                             <a href='{{ route('inventario.entry', $warehouse_id) }}'
