@@ -10,41 +10,9 @@ export default {
         "./node_modules/flowbite/**/*.js"
     ],
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-        },
-        theme: {
-            screens: {
-              sm: '480px',
-              md: '768px',
-              lg: '976px',
-              xl: '1440px',
-            },
-            colors: {
-              gray: colors.gray,
-              blue: colors.blue,
-              red: colors.rose,
-              pink: colors.fuchsia,
-            },
-            fontFamily: {
-              sans: ['Graphik', 'sans-serif'],
-              serif: ['Merriweather', 'serif'],
-            },
-            extend: {
-              spacing: {
-                '128': '32rem',
-                '144': '36rem',
-              },
-              borderRadius: {
-                '4xl': '2rem',
-              }
-            }
-          },
-    },
-    plugins: [
-        forms,
-        require('flowbite/plugin')
-    ],
+        extend: {},
+      },
+      plugins: [
+          require('flowbite/plugin')
+      ],
 };
